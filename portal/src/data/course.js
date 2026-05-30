@@ -108,6 +108,11 @@ export const lessons = {
     exercise:
       'קח שיחה אחת מהיום והרץ עליה את ארבעת השלבים בכתב: בייסליין, שינוי, הקשר, ושאלה אחת טובה יותר שיכולת לשאול.',
     downloads: [D.workbook, D.canvaL3, D.slides1, D.smartQuestions],
+    shortsPack: {
+      file: 'downloads/lesson-03-shorts.pdf',
+      label: 'תמצית שיעור 3 · ארבעת שלבי הפענוח',
+      description: 'סיכום קצר של נקודות המפתח: בייסליין, טריגר, דליפה ושאלה.',
+    },
   },
   l4: {
     id: 'l4',
@@ -123,6 +128,11 @@ export const lessons = {
     exercise:
       'צפה בקטע וידאו של ריאיון או פאנל ללא קול. עצור על חיוך אחד ושאל: האם הוא מערב את כל הפנים, או רק חלק? מה זה אומר על השאלה שהייתי רוצה לשאול?',
     downloads: [D.workbook, D.canvaL4, D.slides2, D.watchDrills],
+    shortsPack: {
+      file: 'downloads/lesson-04-shorts.pdf',
+      label: 'תמצית שיעור 4 · חיוך, מסכה וחוסר התאמה',
+      description: 'סיכום קצר של נקודות המפתח: קריאת חיוכים, התאמת פנים והסימנים לבדיקה.',
+    },
   },
   l5: {
     id: 'l5',
@@ -138,6 +148,11 @@ export const lessons = {
     exercise:
       'בשיחה אחת, שים לב לרגע שבו מישהו לוחץ שפתיים או נוגע בפה אחרי שאלה. רשום מה נשאל באותו רגע. מה הייתה השאלה הבאה שיכלה לעזור?',
     downloads: [D.workbook, D.canvaL5, D.slides2],
+    shortsPack: {
+      file: 'downloads/lesson-05-shorts.pdf',
+      label: 'תמצית שיעור 5 · פה, שפתיים ולסת',
+      description: 'סיכום קצר של נקודות המפתח: ויסות מתח באזור הפה וסימנים לבדיקה.',
+    },
   },
   l6: {
     id: 'l6',

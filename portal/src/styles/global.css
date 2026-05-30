@@ -678,6 +678,49 @@ p { margin: 0; }
 }
 
 /* ============== Lesson terms (Glossary in Lesson) ============== */
+/* ─── Shorts / Resource card ─────────────────────────────── */
+.lesson-block--resource { border-right: 3px solid var(--gold); }
+
+.resource-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(201,168,106,0.07), rgba(201,168,106,0.02));
+  text-decoration: none;
+  transition: border-color .2s, background .2s, transform .15s;
+}
+.resource-card:hover {
+  border-color: var(--glass-border-strong);
+  background: linear-gradient(135deg, rgba(201,168,106,0.12), rgba(201,168,106,0.04));
+  transform: translateY(-1px);
+}
+.resource-card__icon {
+  font-size: 1.2rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.resource-card__body { flex: 1; }
+.resource-card__title {
+  display: block;
+  font-size: .96rem;
+  color: var(--gold-bright);
+  margin-bottom: 3px;
+}
+.resource-card__desc {
+  font-size: .84rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.resource-card__action {
+  font-size: .82rem;
+  color: var(--gold);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
 .lesson-terms {
   list-style: none;
   margin: 0;

@@ -81,6 +81,25 @@ export default function Lesson() {
         <p>{lesson.exercise}</p>
       </section>
 
+      {lesson.shortsPack && (
+        <section className="lesson-block lesson-block--resource">
+          <h2 className="lesson-block__label">תמצית לצפייה מהירה</h2>
+          <a
+            className="resource-card"
+            href={lesson.shortsPack.file}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="resource-card__icon" aria-hidden="true">◈</span>
+            <div className="resource-card__body">
+              <strong className="resource-card__title">{lesson.shortsPack.label}</strong>
+              <p className="resource-card__desc">{lesson.shortsPack.description}</p>
+            </div>
+            <span className="resource-card__action" aria-hidden="true">פתח ←</span>
+          </a>
+        </section>
+      )}
+
       {lessonTerms.length > 0 && (
         <section className="lesson-block">
           <h2 className="lesson-block__label">מושגים מתוך השיעור</h2>
