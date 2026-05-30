@@ -13,8 +13,8 @@
 //   'missing'  — תיקיית שיעור קיימת אבל ריקה
 //   'internal' — מסמך ייצור / עבודה פנימית, לא לתלמיד
 //
-// עדכון 2026-05-30 Phase 1:
-//   הועתקו לפורטל: workbook.pdf, canva-pack L3/L4/L5, shorts L3/L4/L5
+// עדכון 2026-05-30:
+//   הועתקו לפורטל: workbook.pdf, canva-pack L3/L4/L5
 // ============================================================
 
 // ----------------------------------------------------------
@@ -169,37 +169,6 @@ export const rtlPremiumV2Slides = [
   { lessonId: 'l14', fileName: 'Lesson_14_מצגת_RTL_Premium_v2_קורס_לקרוא_אנשים.pptx', sizeMB: 0.05, status: 'ready' },
   { lessonId: 'l15', fileName: 'Lesson_15_מצגת_RTL_Premium_v2_קורס_לקרוא_אנשים.pptx', sizeMB: 0.05, status: 'ready' },
   // basePath: C:\Users\מאור\Desktop\שפת גוף\→ 03_Slides_Canva\RTL_Premium_v2_All_Lessons\Course_Slides_01-15_RTL_Premium_v2_קורס_לקרוא_אנשים\
-]
-
-// Shorts Pack PDFs — קלים, מוכנים, כבר בפורטל (Phase 1)
-export const shortsPacks = [
-  {
-    id: 'shorts-l3',
-    fileName: 'lesson-03-shorts.pdf',
-    localSource: 'VIDEO_04\\sprint_2\\Lesson_03_Shorts_Pack_ארבעת_שלבי_הפענוח.pdf',
-    portalPath: 'portal/public/downloads/lesson-03-shorts.pdf',
-    fileType: 'PDF', sizeMB: 0.12, lessonId: 'l3', moduleId: 'm1',
-    status: 'active',
-    note: 'תמצית שיעור 3 — מופיעה בפורטל כ"תמצית לצפייה מהירה"',
-  },
-  {
-    id: 'shorts-l4',
-    fileName: 'lesson-04-shorts.pdf',
-    localSource: 'VIDEO_04\\sprint_2\\Lesson_04_Shorts_Pack_חיוך_מסכה_וחוסר_התאמה.pdf',
-    portalPath: 'portal/public/downloads/lesson-04-shorts.pdf',
-    fileType: 'PDF', sizeMB: 0.11, lessonId: 'l4', moduleId: 'm2',
-    status: 'active',
-    note: 'תמצית שיעור 4 — מופיעה בפורטל כ"תמצית לצפייה מהירה"',
-  },
-  {
-    id: 'shorts-l5',
-    fileName: 'lesson-05-shorts.pdf',
-    localSource: 'VIDEO_04\\sprint_2\\Lesson_05_Shorts_Pack_פה_שפתיים_ולסת.pdf',
-    portalPath: 'portal/public/downloads/lesson-05-shorts.pdf',
-    fileType: 'PDF', sizeMB: 0.07, lessonId: 'l5', moduleId: 'm2',
-    status: 'active',
-    note: 'תמצית שיעור 5 — מופיעה בפורטל כ"תמצית לצפייה מהירה"',
-  },
 ]
 
 // חבילת ה-ZIP עם כל ה-RTL Premium v2 (כל 15 השיעורים יחד, קל)
