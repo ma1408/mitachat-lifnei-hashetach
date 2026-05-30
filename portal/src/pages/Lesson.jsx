@@ -91,7 +91,13 @@ export default function Lesson() {
                   <span className="lesson-term__name">{t.term}</span>
                   <span className="lesson-term__cat">{t.category}</span>
                 </div>
-                <p className="lesson-term__def">{t.definition}</p>
+                <p className="lesson-term__def">{t.shortDefinition}</p>
+                <Link
+                  to={`/glossary?q=${encodeURIComponent(t.term)}`}
+                  className="lesson-term__link link-gold"
+                >
+                  פירוש מלא במילון ←
+                </Link>
               </li>
             ))}
           </ul>
