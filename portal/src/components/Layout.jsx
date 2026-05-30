@@ -6,7 +6,7 @@ import { COURSE_TITLE } from '../data/course'
 const navItems = [
   { to: '/dashboard', label: 'בית', icon: '⌂' },
   { to: '/course', label: 'הקורס', icon: '☰' },
-  { to: '/downloads', label: 'הורדות', icon: '↓' },
+  { to: '/glossary', label: 'מילון', icon: '◎' },
 ]
 
 export default function Layout() {

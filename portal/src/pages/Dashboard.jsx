@@ -67,24 +67,26 @@ export default function Dashboard() {
       </section>
 
       <section className="grid grid--two">
-        <Link to="/downloads" className="action-card">
-          <span className="action-card__icon">📘</span>
+        <Link to="/glossary" className="action-card">
+          <span className="action-card__icon">◎</span>
           <div>
-            <h3 className="action-card__title">חוברת תלמיד</h3>
+            <h3 className="action-card__title">מילון ואוצר מילים</h3>
             <p className="action-card__text">
-              המדריך שמלווה את כל המודולים - להורדה ולמילוי.
+              חזור לכל מושגי הקורס, פירושים, דוגמאות ושאלות חכמות לשיחה.
             </p>
           </div>
+          <span className="action-card__cta">פתח את המילון ←</span>
         </Link>
 
-        <Link to="/downloads" className="action-card">
-          <span className="action-card__icon">↓</span>
+        <Link to="/course" className="action-card">
+          <span className="action-card__icon">☰</span>
           <div>
-            <h3 className="action-card__title">גישה להורדות</h3>
+            <h3 className="action-card__title">תוכנית הקורס</h3>
             <p className="action-card__text">
-              מצגות, תרגילי צפייה ודף שאלות חכמות במקום אחד.
+              15 שיעורים ב-5 מודולים — הכל ממקום אחד.
             </p>
           </div>
+          <span className="action-card__cta">לתוכנית ←</span>
         </Link>
       </section>
     </div>

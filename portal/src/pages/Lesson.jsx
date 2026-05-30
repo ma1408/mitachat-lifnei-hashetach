@@ -6,7 +6,7 @@ import {
   getModuleById,
   getNextLessonId,
 } from '../data/course'
-import { getDownloadById } from '../data/downloads'
+import { getTermsByLesson } from '../data/glossary'
 
 export default function Lesson() {
   const { lessonId } = useParams()
@@ -28,9 +28,7 @@ export default function Lesson() {
   const module = getModuleById(lesson.moduleId)
   const nextId = getNextLessonId(lesson.id)
   const completed = isCompleted(lesson.id)
-  const lessonDownloads = (lesson.downloads || [])
-    .map(getDownloadById)
-    .filter(Boolean)
+  const lessonTerms = getTermsByLesson(lesson.id).slice(0, 4)
 
   return (
     <div className="container container--narrow stack-lg">
@@ -83,24 +81,23 @@ export default function Lesson() {
         <p>{lesson.exercise}</p>
       </section>
 
-      {lessonDownloads.length > 0 && (
+      {lessonTerms.length > 0 && (
         <section className="lesson-block">
-          <h2 className="lesson-block__label">קבצים להורדה</h2>
-          <ul className="mini-downloads">
-            {lessonDownloads.map((d) => (
-              <li key={d.id} className="mini-download">
-                <span className="mini-download__icon">{d.icon}</span>
-                <span className="mini-download__title">{d.title}</span>
-                {d.available && d.file ? (
-                  <a className="mini-download__btn" href={d.file} download>
-                    הורדה
-                  </a>
-                ) : (
-                  <span className="mini-download__soon">בקרוב</span>
-                )}
+          <h2 className="lesson-block__label">מושגים מתוך השיעור</h2>
+          <ul className="lesson-terms">
+            {lessonTerms.map((t) => (
+              <li key={t.id} className="lesson-term">
+                <div className="lesson-term__head">
+                  <span className="lesson-term__name">{t.term}</span>
+                  <span className="lesson-term__cat">{t.category}</span>
+                </div>
+                <p className="lesson-term__def">{t.definition}</p>
               </li>
             ))}
           </ul>
+          <Link to="/glossary" className="lesson-terms__more link-gold">
+            לכל המושגים במילון ←
+          </Link>
         </section>
       )}
 

@@ -668,6 +668,249 @@ p { margin: 0; }
   padding: 8px 0;
 }
 
+/* ============== Action card CTA ============== */
+.action-card__cta {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--gold-bright);
+  font-weight: 600;
+}
+
+/* ============== Lesson terms (Glossary in Lesson) ============== */
+.lesson-terms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lesson-term {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(0,0,0,0.22);
+  border: 1px solid var(--glass-border);
+}
+.lesson-term__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.lesson-term__name {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--gold-bright);
+}
+.lesson-term__cat {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  border: 1px solid var(--glass-border);
+  padding: 2px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.lesson-term__def {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+.lesson-terms__more {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.86rem;
+}
+
+/* ============== Glossary page ============== */
+.glossary-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.glossary-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.glossary-search__icon {
+  position: absolute;
+  right: 16px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  pointer-events: none;
+}
+.glossary-search__input {
+  width: 100%;
+  padding: 14px 44px 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: rgba(0,0,0,0.28);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  transition: border-color .2s, box-shadow .2s;
+  direction: rtl;
+}
+.glossary-search__input::placeholder { color: var(--text-muted); }
+.glossary-search__input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+.glossary-search__input::-webkit-search-cancel-button { display: none; }
+.glossary-search__clear {
+  position: absolute;
+  left: 14px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 4px;
+  cursor: pointer;
+  transition: color .15s;
+}
+.glossary-search__clear:hover { color: var(--text); }
+
+.glossary-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.glossary-pill {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: color .15s, border-color .15s, background .15s;
+  white-space: nowrap;
+}
+.glossary-pill:hover {
+  color: var(--text);
+  border-color: var(--glass-border-strong);
+  background: rgba(201,168,106,0.05);
+}
+.glossary-pill--active {
+  color: var(--gold-bright);
+  border-color: var(--gold);
+  background: rgba(201,168,106,0.12);
+}
+
+.glossary-count { font-size: 0.82rem; padding: 2px 0; }
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.glossary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 20px;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.glossary-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--shadow);
+}
+
+.glossary-card__head { display: flex; flex-direction: column; gap: 6px; }
+.glossary-card__cat {
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.glossary-card__term {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--gold-bright);
+  line-height: 1.2;
+}
+
+.glossary-card__def {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.glossary-card__example {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(0,0,0,0.22);
+  border-right: 2px solid var(--glass-border-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.glossary-card__example-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.glossary-card__example p {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.glossary-card__question {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, rgba(201,168,106,0.08), rgba(201,168,106,0.02));
+  border: 1px solid rgba(201,168,106,0.18);
+}
+.glossary-card__question-label { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+.glossary-card__question p {
+  font-size: 0.86rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.glossary-card__lessons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.glossary-card__lesson-tag {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  border: 1px solid var(--glass-border);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.glossary-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.glossary-empty__icon { font-size: 2.2rem; opacity: 0.5; }
+
 /* ============== Responsive ============== */
 @media (max-width: 720px) {
   .hamburger { display: flex; }
