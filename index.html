@@ -3,236 +3,543 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>מתחת לפני השטח | גישה מוקדמת לקורס</title>
-    <meta
-      name="description"
-      content="מתחת לפני השטח - פענוח שפת גוף, סאבטקסט והתנהגות בשיחות אמיתיות. לא כל מה שחשוב נאמר בקול."
-    >
+    <title>מתחת לפני השטח | קורס לפענוח שפת גוף וסאבטקסט</title>
+    <meta name="description" content="קורס מעשי לפענוח שפת גוף, סאבטקסט והתנהגות בשיחות אמיתיות. לא קריאת מחשבות — שאלה טובה יותר.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <header class="topbar" id="topbar">
+      <div class="shell topbar__inner">
+        <a class="topbar__brand" href="#top" aria-label="חזרה לראש הדף">
+          <span class="topbar__mark" aria-hidden="true">✳︎</span>
+          <span>מתחת לפני השטח</span>
+        </a>
+
+        <nav class="topbar__nav" id="main-nav" aria-label="ניווט ראשי">
+          <a href="#learn">מה לומדים</a>
+          <a href="#audience">למי זה מתאים</a>
+          <a href="#inside">בתוך הקורס</a>
+          <a href="#faq">שאלות נפוצות</a>
+        </nav>
+
+        <div class="topbar__actions">
+          <a class="btn btn-outline btn-sm" href="portal/">הצצה לפורטל</a>
+          <a class="btn btn-gold btn-sm" href="#lead-form">הצטרפות מוקדמת</a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
     <main>
+
+      <!-- ═══ HERO ═══ -->
       <section class="hero" id="top">
         <div class="hero-bg" aria-hidden="true"></div>
-        <div class="shell hero-grid">
+        <div class="hero-noise" aria-hidden="true"></div>
+
+        <div class="shell hero-content">
           <div class="hero-copy">
-            <p class="brand-kicker">מתחת לפני השטח</p>
-            <h1>לקרוא את מה שקורה מתחת למילים</h1>
-            <p class="lead">
-              פענוח שפת גוף, סאבטקסט והתנהגות בשיחות אמיתיות
+
+            <p class="hero-eyebrow">
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              לא כל מה שחשוב נאמר בקול.
             </p>
-            <p class="hero-subtitle">
-              קורס מעשי שמלמד לזהות שינוי, להבין הקשר ולשאול טוב יותר -
-              בלי לנחש, בלי לקפוץ למסקנות ובלי להפוך רמז לפסק דין.
+
+            <div class="typewriter-wrap" aria-live="polite" aria-atomic="true">
+              <p class="typewriter" id="typewriter"></p>
+            </div>
+
+            <h1 class="hero-h1">לקרוא שיחות אחרת.</h1>
+
+            <p class="hero-lead">
+              קורס מעשי לפענוח שפת גוף, סאבטקסט והתנהגות בשיחות אמיתיות —
+              בלי לקרוא מחשבות, בלי לקבוע שאנשים משקרים,
+              ובלי להפוך סימן אחד למסקנה.
+              לומדים לזהות שינוי, להבין הקשר, ולשאול שאלה טובה יותר.
             </p>
-            <div class="micro-story">
-              <p>מישהו אומר לך “הכול בסדר”.</p>
-              <p>אבל הפנים, הקול והגוף מספרים שיש שם עוד משהו.</p>
-              <p>השאלה היא לא “מה הוא מסתיר?”</p>
-              <p><strong>השאלה היא: איפה צריך לשאול טוב יותר?</strong></p>
+
+            <div class="hero-pills">
+              <a class="btn btn-gold" href="#lead-form">אני רוצה להצטרף</a>
+              <a class="btn btn-glass" href="#learn">לראות מה לומדים</a>
+              <a class="btn btn-glass" href="#audience">למי זה מתאים</a>
+              <a class="btn btn-glass" href="portal/" target="_blank" rel="noopener">הצצה לפורטל התלמידים</a>
+              <!-- PLACEHOLDER: החלף href="mailto:hello@example.com" בכתובת הדוא"ל שלך -->
+              <a class="btn btn-outline" href="mailto:hello@example.com">שאלה? דברו איתנו</a>
             </div>
-            <div class="actions">
-              <a class="button button-primary" href="#lead-form">אני רוצה גישה מוקדמת</a>
-              <a class="button button-ghost" href="#preview">ראה מה לומדים בפנים</a>
-            </div>
-            <p class="brand-line">לא כל מה שחשוב נאמר בקול.</p>
+
           </div>
 
-          <aside class="hero-stage" aria-label="תצוגת קורס מתחת לפני השטח">
+          <aside class="hero-visual" aria-label="תצוגת שיחה עם קריאת סימנים">
             <div class="glass-frame">
-              <img src="assets/hero/body-language-course-hero.png" alt="שיחה רגועה עם קשב לשפת גוף וסאבטקסט">
+              <img src="assets/hero/body-language-course-hero.png"
+                   alt="שיחה שבה שפת גוף, טון וסאבטקסט נקראים בתשומת לב"
+                   width="540" height="540" loading="eager">
               <div class="signal-card signal-top">
-                <span>Baseline</span>
+                <span class="signal-label">Baseline</span>
                 <strong>מה רגיל כאן?</strong>
               </div>
               <div class="signal-card signal-bottom">
-                <span>Question</span>
+                <span class="signal-label">Question</span>
                 <strong>מה נכון לשאול עכשיו?</strong>
               </div>
             </div>
           </aside>
         </div>
+
+        <div class="hero-scroll-hint" aria-hidden="true">
+          <span></span>
+        </div>
       </section>
 
+
+      <!-- ═══ SECTION 1: מה לומדים ═══ -->
+      <section class="section section-learn" id="learn">
+        <div class="shell">
+          <header class="section-heading">
+            <p class="eyebrow">מה לומדים כאן באמת?</p>
+            <h2>לא לזהות שקרים. להבין שיחות.</h2>
+          </header>
+
+          <div class="learn-grid">
+            <article class="learn-card">
+              <div class="learn-card__icon" aria-hidden="true">⊛</div>
+              <h3>פער בין מילים לגוף</h3>
+              <p>להבין מתי מה שנאמר לא לגמרי מסתנכרן עם מה שהגוף, הטון והפנים משדרים.</p>
+            </article>
+            <article class="learn-card">
+              <div class="learn-card__icon" aria-hidden="true">◎</div>
+              <h3>בייסליין ושינוי</h3>
+              <p>לא קוראים סימן בודד. קודם מבינים מה רגיל לאדם — ואז שמים לב מה השתנה ומתי.</p>
+            </article>
+            <article class="learn-card">
+              <div class="learn-card__icon" aria-hidden="true">◈</div>
+              <h3>סאבטקסט וטונציה</h3>
+              <p>ללמוד לשמוע לא רק מה נאמר, אלא מה המשפט מנסה לעשות בשיחה ברגע הזה.</p>
+            </article>
+            <article class="learn-card">
+              <div class="learn-card__icon" aria-hidden="true">❓</div>
+              <h3>שאלות חכמות</h3>
+              <p>במקום לקבוע מסקנה — לשאול שאלה שמקדמת הבנה, אמון ובהירות בשיחות אמיתיות.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ═══ PREVIEW SECTION (live examples) ═══ -->
       <section class="section section-preview" id="preview">
         <div class="shell">
-          <div class="section-heading center">
+          <header class="section-heading center">
             <p class="eyebrow">זה הרגע שאתה לומד לזהות</p>
             <h2>לא סימן אחד. שינוי קטן בתוך רגע אמיתי.</h2>
-            <p>
-              הגוף לא אומר לנו מה האמת - הוא מסמן איפה לשאול שאלה טובה יותר.
-            </p>
-          </div>
+            <p>הגוף לא אומר לנו מה האמת — הוא מסמן איפה לשאול שאלה טובה יותר.</p>
+          </header>
 
           <div class="preview-grid">
-            <article class="preview-card feature">
+            <article class="preview-card card-feature">
               <div class="preview-media">
-                <img src="assets/previews/preview-01-price-resistance.png" alt="שיחה שבה מילים מסכימות אבל הגוף נעצר">
+                <img src="assets/previews/preview-01-price-resistance.png"
+                     alt="שיחה שבה מילים מסכימות אבל הגוף נעצר"
+                     width="540" height="360" loading="lazy">
               </div>
               <div class="preview-copy">
-                <span>01</span>
+                <span class="card-num">01</span>
                 <h3>מילים אומרות כן, הגוף נעצר</h3>
-                <p>שאלה חכמה: “מה צריך להיות ברור לך כדי שזה ירגיש נכון?”</p>
+                <p>שאלה חכמה: "מה צריך להיות ברור לך כדי שזה ירגיש נכון?"</p>
               </div>
             </article>
 
             <article class="preview-card">
               <div class="preview-media">
-                <img src="assets/previews/preview-02-everything-is-fine.png" alt="חיוך שלא מתאים לרגע בשיחה">
+                <img src="assets/previews/preview-02-everything-is-fine.png"
+                     alt="חיוך שלא מתאים לרגע בשיחה"
+                     width="420" height="300" loading="lazy">
               </div>
               <div class="preview-copy">
-                <span>02</span>
+                <span class="card-num">02</span>
                 <h3>חיוך שלא מתאים לרגע</h3>
-                <p>שאלה חכמה: “מה עוד יושב שם ולא אמרנו בקול?”</p>
+                <p>שאלה חכמה: "מה עוד יושב שם ולא אמרנו בקול?"</p>
               </div>
             </article>
 
             <article class="preview-card">
               <div class="preview-media">
-                <img src="assets/previews/preview-03-neck-touch.png" alt="גוף שנסגר באמצע שיחה">
+                <img src="assets/previews/preview-03-neck-touch.png"
+                     alt="גוף שנסגר באמצע שיחה"
+                     width="420" height="300" loading="lazy">
               </div>
               <div class="preview-copy">
-                <span>03</span>
+                <span class="card-num">03</span>
                 <h3>גוף שנסגר באמצע שיחה</h3>
-                <p>שאלה חכמה: “איפה זה התחיל להרגיש פחות פשוט?”</p>
+                <p>שאלה חכמה: "איפה זה התחיל להרגיש פחות פשוט?"</p>
               </div>
             </article>
           </div>
         </div>
       </section>
 
+
+      <!-- ═══ SECTION 2: למי זה מתאים ═══ -->
+      <section class="section section-audience" id="audience">
+        <div class="shell">
+          <header class="section-heading">
+            <p class="eyebrow">למי זה מתאים?</p>
+            <h2>לכל מי שמנהל שיחות — ורוצה להבין אותן טוב יותר.</h2>
+          </header>
+
+          <div class="audience-grid">
+            <article class="audience-card">
+              <span class="audience-icon" aria-hidden="true">◈</span>
+              <h3>אנשי מכירות</h3>
+              <p>לזהות התנגדות שקטה, היסוס, וחוסר בהירות — ולשאול לפני שסוגרים.</p>
+            </article>
+            <article class="audience-card">
+              <span class="audience-icon" aria-hidden="true">◈</span>
+              <h3>מנהלים</h3>
+              <p>לנהל שיחות משוב, לזהות מתח בצוות, ולתזמן שאלה נכונה ברגע הנכון.</p>
+            </article>
+            <article class="audience-card">
+              <span class="audience-icon" aria-hidden="true">◈</span>
+              <h3>עצמאים ויזמים</h3>
+              <p>לקרוא את הפגישה מעבר לדברים שנאמרים — ולהגיב בחוכמה.</p>
+            </article>
+            <article class="audience-card">
+              <span class="audience-icon" aria-hidden="true">◈</span>
+              <h3>יוצרי תוכן ומרצים</h3>
+              <p>להבין מה הקהל מרגיש, גם כשאנשים לא אומרים את זה בקול.</p>
+            </article>
+            <article class="audience-card">
+              <span class="audience-icon" aria-hidden="true">◈</span>
+              <h3>שיחות יומיומיות</h3>
+              <p>לכל מי שרוצה להבין שיחות יומיומיות — עם משפחה, שותפים, לקוחות.</p>
+            </article>
+            <article class="audience-card audience-card--wide">
+              <span class="audience-icon" aria-hidden="true">◎</span>
+              <h3>כל מי שרוצה לשאול טוב יותר</h3>
+              <p>לזהות אי-נוחות, התנגדות או פערים בשיחה — ולהגיב בצורה אחראית, לא בקפיצה למסקנה.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ═══ SECTION 3: בתוך הקורס ═══ -->
+      <section class="section section-inside" id="inside">
+        <div class="shell inside-layout">
+
+          <header class="section-heading">
+            <p class="eyebrow">מה יש בתוך הקורס?</p>
+            <h2>מערכת לימוד קצרה, חדה ויישומית לשיחות אמיתיות.</h2>
+          </header>
+
+          <div class="inside-grid">
+            <div class="inside-stats">
+              <div class="stat-item">
+                <span class="stat-num">15</span>
+                <span class="stat-label">שיעורים</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">5</span>
+                <span class="stat-label">מודולים</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">54</span>
+                <span class="stat-label">מושגים במילון</span>
+              </div>
+            </div>
+
+            <ul class="inside-list">
+              <li>
+                <span class="inside-check" aria-hidden="true">✓</span>
+                <div>
+                  <strong>פורטל תלמידים</strong>
+                  <p>חוויית למידה פנימית — לא מרכז הורדות.</p>
+                </div>
+              </li>
+              <li>
+                <span class="inside-check" aria-hidden="true">✓</span>
+                <div>
+                  <strong>מצגות פרימיום</strong>
+                  <p>שקפים לכל שיעור עם דוגמאות חיות ומסגרות עבודה.</p>
+                </div>
+              </li>
+              <li>
+                <span class="inside-check" aria-hidden="true">✓</span>
+                <div>
+                  <strong>חוברת תלמיד</strong>
+                  <p>תרגול, מושגים וסיכומי עבודה לכל מודול.</p>
+                </div>
+              </li>
+              <li>
+                <span class="inside-check" aria-hidden="true">✓</span>
+                <div>
+                  <strong>דוגמאות משיחות אמיתיות</strong>
+                  <p>קטעים שמדגימים זיהוי שינוי, פענוח הקשר, ושאלת המשך.</p>
+                </div>
+              </li>
+              <li>
+                <span class="inside-check" aria-hidden="true">✓</span>
+                <div>
+                  <strong>תרגול דרך שאלות חכמות</strong>
+                  <p>ניסוחים שמקדמים שיחה ולא יוצרים התנגדות.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="glossary-promo">
+              <div class="glossary-promo__head">
+                <span class="glossary-promo__label">נכס פרימיום</span>
+                <h3>מילון ואוצר מילים</h3>
+              </div>
+              <p>
+                מאגר מושגים מעשי עם 54 ערכים. כל מושג מוסבר לעומק: למה הוא חשוב, מה <em>לא</em> להסיק ממנו,
+                ואיזו שאלה חכמה אפשר לשאול בעקבותיו. חלק מפורטל התלמידים.
+              </p>
+              <a class="btn btn-outline btn-sm" href="portal/" target="_blank" rel="noopener">
+                הצצה לפורטל ←
+              </a>
+            </div>
+          </div>
+
+          <!-- Modules stack -->
+          <div class="modules-block">
+            <h3 class="modules-block__title">המודולים</h3>
+            <div class="module-stack">
+              <article>
+                <span>01</span>
+                <div>
+                  <h4>שיטת הפענוח</h4>
+                  <p>איך מסתכלים על שינוי בלי להפוך אותו למסקנה.</p>
+                </div>
+              </article>
+              <article>
+                <span>02</span>
+                <div>
+                  <h4>פנים</h4>
+                  <p>מבט, חיוך, לסת וקצב תגובה בתוך הקשר.</p>
+                </div>
+              </article>
+              <article>
+                <span>03</span>
+                <div>
+                  <h4>גוף וידיים</h4>
+                  <p>מגע עצמי, סגירה, עצירה ותנועה שמופיעה ונעלמת.</p>
+                </div>
+              </article>
+              <article>
+                <span>04</span>
+                <div>
+                  <h4>מלל, טונציה וסאבטקסט</h4>
+                  <p>הפער בין מה שנאמר לבין האופן שבו הוא נאמר.</p>
+                </div>
+              </article>
+              <article>
+                <span>05</span>
+                <div>
+                  <h4>יישום בעולם האמיתי</h4>
+                  <p>איך שואלים, מתי עוצרים ואיך שומרים על אמון.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ═══ SECTION 4: השיטה ═══ -->
       <section class="section section-method" id="method">
         <div class="shell method-layout">
           <div class="method-intro">
-            <p class="eyebrow">השיטה</p>
+            <p class="eyebrow">השיטה בקצרה</p>
             <h2>ארבעה שלבים שמחזירים סדר לרגע לא ברור.</h2>
             <p>
               במקום להחליט מהר מדי מה האדם מרגיש, עוקבים אחרי שינוי ביחס להקשר.
               רק אז פותחים את השיחה בשאלה מדויקת יותר.
             </p>
+            <p class="method-principle">
+              הגוף לא אומר לנו מה האמת — הוא מסמן איפה כדאי לעצור, לשים לב ולשאול טוב יותר.
+            </p>
           </div>
           <div class="flow">
             <article>
               <span>01</span>
-              <h3>בייסליין</h3>
-              <p>איך האדם נראה כשהכול רגיל?</p>
+              <div>
+                <h3>מזהים בייסליין</h3>
+                <p>איך האדם נראה כשהכול רגיל? מה הנורמה שלו?</p>
+              </div>
             </article>
             <article>
               <span>02</span>
-              <h3>טריגר</h3>
-              <p>מה נאמר רגע לפני שהגוף השתנה?</p>
+              <div>
+                <h3>שמים לב לשינוי</h3>
+                <p>מה השתנה? ומה נאמר בשיחה רגע לפני?</p>
+              </div>
             </article>
             <article>
               <span>03</span>
-              <h3>דליפה</h3>
-              <p>מה הופיע לפני שהאדם סידר את עצמו?</p>
+              <div>
+                <h3>בודקים הקשר</h3>
+                <p>מה קרה בשיחה? האם יש אשכול סימנים או סימן מבודד?</p>
+              </div>
             </article>
             <article>
               <span>04</span>
-              <h3>שאלה</h3>
-              <p>איך ממשיכים בלי לתקוף ובלי לסגור את האדם?</p>
+              <div>
+                <h3>שואלים שאלה טובה יותר</h3>
+                <p>שאלה רכה וממוקדת שפותחת — לא מאשימה ולא סוגרת.</p>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-included" id="included">
-        <div class="shell">
-          <div class="section-heading">
-            <p class="eyebrow">מה מקבלים בקורס</p>
-            <h2>מערכת לימוד קצרה, חדה ויישומית לשיחות אמיתיות.</h2>
-          </div>
-          <div class="included-grid">
-            <article><span>15</span><h3>15 שיעורים</h3><p>יחידות קצרות שמתקדמות מהבסיס ליישום.</p></article>
-            <article><span>Deck</span><h3>מצגות פרימיום</h3><p>מסכים נקיים, היררכיה ברורה ודוגמאות חיות.</p></article>
-            <article><span>PDF</span><h3>חוברת תלמיד</h3><p>תרגול, צ׳ק ליסטים וסיכומי עבודה.</p></article>
-            <article><span>Watch</span><h3>תרגילי צפייה</h3><p>לתרגל הבחנה בשינויים קטנים בזמן אמת.</p></article>
-            <article><span>Ask</span><h3>שאלות לשיחות אמיתיות</h3><p>ניסוחים שמקדמים שיחה במקום ליצור התנגדות.</p></article>
-            <article><span>Model</span><h3>מודלים לפענוח</h3><p>מסגרת עבודה שמונעת קפיצה לפרשנות מהירה.</p></article>
-          </div>
-        </div>
-      </section>
 
-      <section class="section section-modules" id="modules">
-        <div class="shell modules-layout">
-          <div>
-            <p class="eyebrow">המודולים</p>
-            <h2>מה לומדים בפנים</h2>
-            <p class="soft-copy">
-              כל מודול בנוי סביב רגעים שאנשים באמת פוגשים: עבודה, מכירה,
-              זוגיות, משפחה ושיחות טעונות שלא תמיד נאמר בהן הכול.
-            </p>
-          </div>
-          <div class="module-stack">
-            <article><span>01</span><h3>שיטת הפענוח</h3><p>איך מסתכלים על שינוי בלי להפוך אותו למסקנה.</p></article>
-            <article><span>02</span><h3>פנים</h3><p>מבט, חיוך, לסת וקצב תגובה בתוך הקשר.</p></article>
-            <article><span>03</span><h3>ידיים וגוף עליון</h3><p>מגע עצמי, סגירה, עצירה ותנועה שמופיעה ונעלמת.</p></article>
-            <article><span>04</span><h3>מלל, טונציה וסאבטקסט</h3><p>הפער בין מה שנאמר לבין האופן שבו הוא נאמר.</p></article>
-            <article><span>05</span><h3>יישום בעולם האמיתי</h3><p>איך שואלים, מתי עוצרים ואיך שומרים על אמון.</p></article>
-          </div>
-        </div>
-      </section>
-
+      <!-- ═══ TRUST SECTION ═══ -->
       <section class="section section-trust" id="trust">
-        <div class="shell trust-panel">
-          <p class="eyebrow">אמינות לפני דרמה</p>
-          <h2>זה לא טריק. זו דרך להקשיב טוב יותר למה שקורה בשיחה.</h2>
-          <div class="trust-grid">
-            <article>
-              <h3>לא קריאת מחשבות</h3>
-              <p>לא מנסים לדעת מה אדם חושב. בודקים מה השתנה ברגע מסוים.</p>
-            </article>
-            <article>
-              <h3>לא זיהוי שקר</h3>
-              <p>לא הופכים סימן גופני להאשמה. עובדים עם הקשר ושאלה.</p>
-            </article>
-            <article>
-              <h3>לא קביעה טיפולית</h3>
-              <p>זו שיטה לשים לב לשינויים ולפתוח שיחה טובה יותר.</p>
-            </article>
+        <div class="shell">
+          <div class="trust-panel">
+            <p class="eyebrow">אמינות לפני דרמה</p>
+            <h2>זה לא טריק. זו דרך להקשיב טוב יותר למה שקורה בשיחה.</h2>
+            <div class="trust-grid">
+              <article>
+                <h3>לא קריאת מחשבות</h3>
+                <p>לא מנסים לדעת מה אדם חושב. בודקים מה השתנה ברגע מסוים — ושואלים.</p>
+              </article>
+              <article>
+                <h3>לא זיהוי שקר</h3>
+                <p>לא הופכים סימן גופני להאשמה. עובדים עם הקשר, שינוי, ושאלה רכה.</p>
+              </article>
+              <article>
+                <h3>לא קביעה טיפולית</h3>
+                <p>זו שיטה לשים לב לשינויים ולפתוח שיחה טובה יותר — לא לאבחן.</p>
+              </article>
+            </div>
           </div>
         </div>
       </section>
 
+
+      <!-- ═══ CTA SECTION ═══ -->
+      <section class="section section-cta" id="cta">
+        <div class="shell cta-inner">
+          <p class="cta-eyebrow">מוכן להתחיל?</p>
+          <h2 class="cta-h2">רוצה ללמוד לראות את מה שרוב האנשים מפספסים?</h2>
+          <p class="cta-lead">
+            הצטרפות מוקדמת לקורס "מתחת לפני השטח" —
+            פענוח שפת גוף, סאבטקסט והתנהגות בשיחות אמיתיות.
+          </p>
+          <div class="cta-pills">
+            <a class="btn btn-gold btn-lg" href="#lead-form">אני רוצה גישה לקורס</a>
+            <!-- PLACEHOLDER: החלף href="mailto:hello@example.com" בכתובת הדוא"ל שלך -->
+            <a class="btn btn-outline btn-lg" href="mailto:hello@example.com">יש לי שאלה לפני ההצטרפות</a>
+          </div>
+          <p class="brand-tagline">לא כל מה שחשוב נאמר בקול.</p>
+        </div>
+      </section>
+
+
+      <!-- ═══ FAQ ═══ -->
+      <section class="section section-faq" id="faq">
+        <div class="shell faq-layout">
+          <header class="section-heading">
+            <p class="eyebrow">שאלות נפוצות</p>
+            <h2>כל מה שרצית לשאול לפני שנכנסים.</h2>
+          </header>
+
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>האם זה קורס לזיהוי שקרים?</summary>
+              <p>
+                לא. הקורס לא מלמד לקבוע שמישהו משקר. הוא מלמד לזהות פערים, שינוי וסימנים לבדיקה — ואז לשאול טוב יותר, לא לקפוץ למסקנה.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>האם צריך ידע קודם?</summary>
+              <p>
+                לא. הקורס בנוי לאנשים רגילים שרוצים להבין שיחות טוב יותר — החל מהבסיס ועד לשיחות מורכבות כמו ניהול, מכירות ושיחות קשות.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>האם זה מתאים לאנשי מכירות?</summary>
+              <p>
+                כן, במיוחד לשיחות שבהן יש התנגדות, היסוס, חוסר בהירות, או פער בין מה שהלקוח אומר לבין איך שהוא מגיב. השיטה מאפשרת לשאול שאלה שפותחת — לא שסוגרת.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>האם יש פורטל תלמידים?</summary>
+              <p>
+                כן. הקורס כולל פורטל תלמידים עם שיעורים, מילון ואוצר מילים עם 54 מושגים, וחוויית למידה פנימית. לא תיקיית הורדות — חוויה מלאה.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ═══ LEAD FORM ═══ -->
       <section class="section section-final" id="lead-form">
         <div class="shell final-grid">
-          <div>
+          <div class="final-copy">
             <p class="brand-kicker">מתחת לפני השטח</p>
             <h2>רוצה להפסיק לפספס את מה שקורה מתחת למילים?</h2>
-            <p>
-              השאר פרטים ונעדכן אותך על גישה מוקדמת לקורס.
-            </p>
-            <p class="brand-line">לא כל מה שחשוב נאמר בקול.</p>
+            <p>השאר פרטים ונעדכן אותך על גישה מוקדמת לקורס.</p>
+            <p class="brand-tagline">לא כל מה שחשוב נאמר בקול.</p>
           </div>
           <form class="lead-form" aria-label="טופס התעניינות">
             <label>
               שם
-              <input name="name" type="text" autocomplete="name" required>
+              <input name="name" type="text" autocomplete="name" placeholder="השם שלך" required>
             </label>
             <label>
               טלפון / וואטסאפ
-              <input name="phone" type="tel" autocomplete="tel" required>
+              <input name="phone" type="tel" autocomplete="tel" placeholder="050-0000000" required>
             </label>
             <label>
               אימייל
-              <input name="email" type="email" autocomplete="email" required>
+              <input name="email" type="email" autocomplete="email" placeholder="your@email.com" required>
             </label>
-            <button class="button button-primary" type="submit">אני רוצה גישה מוקדמת</button>
+            <button class="btn btn-gold btn-block" type="submit">אני רוצה גישה מוקדמת</button>
             <p class="form-note">MVP מקומי בלבד. חיבור למערכת דיוור יתבצע בנפרד.</p>
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>
+
     </main>
 
+    <!-- ═══ FOOTER ═══ -->
     <footer class="footer">
       <div class="shell footer-inner">
-        <strong>מתחת לפני השטח</strong>
-        <span>פענוח שפת גוף, סאבטקסט והתנהגות בשיחות אמיתיות</span>
+        <div class="footer-brand">
+          <span class="topbar__mark" aria-hidden="true">✳︎</span>
+          <strong>מתחת לפני השטח</strong>
+        </div>
+        <span class="footer-sub">פענוח שפת גוף, סאבטקסט והתנהגות בשיחות אמיתיות</span>
+        <nav class="footer-nav" aria-label="קישורים">
+          <a href="#learn">מה לומדים</a>
+          <a href="#faq">שאלות נפוצות</a>
+          <a href="portal/">פורטל תלמידים</a>
+          <!-- PLACEHOLDER: החלף href="mailto:hello@example.com" בכתובת הדוא"ל שלך -->
+          <a href="mailto:hello@example.com">צור קשר</a>
+        </nav>
       </div>
     </footer>
 
-    <a class="sticky-cta" href="#lead-form">אני רוצה גישה מוקדמת</a>
+    <!-- sticky mobile CTA -->
+    <a class="sticky-cta" href="#lead-form" aria-label="הצטרפות מוקדמת">אני רוצה גישה מוקדמת</a>
+
     <script src="script.js"></script>
   </body>
 </html>
