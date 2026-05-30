@@ -18,6 +18,9 @@ const D = {
   slides3: 'slides-m3',
   slides4: 'slides-m4',
   slides5: 'slides-m5',
+  canvaL3: 'canva-l3',
+  canvaL4: 'canva-l4',
+  canvaL5: 'canva-l5',
   watchDrills: 'watch-drills',
   smartQuestions: 'smart-questions',
 }
@@ -104,7 +107,7 @@ export const lessons = {
       'ארבעת השלבים מחליפים את התשובה המהירה בתהליך. המטרה היא לא "לתפוס" אנשים, אלא להבין איפה כדאי להעמיק.',
     exercise:
       'קח שיחה אחת מהיום והרץ עליה את ארבעת השלבים בכתב: בייסליין, שינוי, הקשר, ושאלה אחת טובה יותר שיכולת לשאול.',
-    downloads: [D.workbook, D.slides1, D.smartQuestions],
+    downloads: [D.workbook, D.canvaL3, D.slides1, D.smartQuestions],
   },
   l4: {
     id: 'l4',
@@ -119,7 +122,7 @@ export const lessons = {
       'חיוך מנומס הוא תקשורת לגיטימית, לא זיוף. השאלה היא לא "האם החיוך אמיתי", אלא "האם הוא מתאים לשאר מה שאני רואה ושומע".',
     exercise:
       'צפה בקטע וידאו של ריאיון או פאנל ללא קול. עצור על חיוך אחד ושאל: האם הוא מערב את כל הפנים, או רק חלק? מה זה אומר על השאלה שהייתי רוצה לשאול?',
-    downloads: [D.workbook, D.slides2, D.watchDrills],
+    downloads: [D.workbook, D.canvaL4, D.slides2, D.watchDrills],
   },
   l5: {
     id: 'l5',
@@ -134,7 +137,7 @@ export const lessons = {
       'הידוק באזור הפה הוא לרוב ויסות, לא הצהרה. הוא מסמן "כאן יש מתח" - וזו הזמנה להאט ולשאול, לא להאשים.',
     exercise:
       'בשיחה אחת, שים לב לרגע שבו מישהו לוחץ שפתיים או נוגע בפה אחרי שאלה. רשום מה נשאל באותו רגע. מה הייתה השאלה הבאה שיכלה לעזור?',
-    downloads: [D.workbook, D.slides2],
+    downloads: [D.workbook, D.canvaL5, D.slides2],
   },
   l6: {
     id: 'l6',
