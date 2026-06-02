@@ -1,46 +1,75 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-
-// בקרת גישה ל-MVP בלבד. אין כאן אבטחה אמיתית:
-// הזדהות נשמרת ב-localStorage ומשמשת רק כדי לחסום ויזואלית את האזור.
-// הגנה אמיתית תופעל לאחר חיבור Supabase Auth.
+import { supabase } from '../lib/supabase'
 
 const AuthContext = createContext(null)
-const STORAGE_KEY = 'mitachat_auth'
-
-function readAuth() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : null
-  } catch {
-    return null
-  }
-}
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => readAuth())
+  const [session, setSession]   = useState(undefined) // undefined = טוען
+  const [profile, setProfile]   = useState(null)
 
+  // האזנה לשינויי session
   useEffect(() => {
-    if (user) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(user))
-    } else {
-      localStorage.removeItem(STORAGE_KEY)
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session ?? null)
+    })
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => setSession(session ?? null)
+    )
+    return () => subscription.unsubscribe()
+  }, [])
+
+  // טעינת פרופיל כשיש session
+  useEffect(() => {
+    if (!session?.user) {
+      setProfile(null)
+      return
     }
-  }, [user])
+    supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', session.user.id)
+      .single()
+      .then(({ data }) => setProfile(data ?? null))
+  }, [session])
 
-  // login של MVP: כל אימייל תקין + סיסמה לא ריקה מספיקים.
-  // אין אימות מול שרת.
-  function login(email) {
-    const cleanEmail = (email || '').trim()
-    setUser({ email: cleanEmail, loggedInAt: Date.now() })
-    return true
+  async function login(email, password) {
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    return error ?? null
   }
 
-  function logout() {
-    setUser(null)
+  async function logout() {
+    await supabase.auth.signOut()
   }
+
+  // שליחת קישור כניסה לתלמיד חדש (ללא service_role)
+  async function inviteStudent(email) {
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: window.location.href.split('#')[0],
+      },
+    })
+    return error ?? null
+  }
+
+  const loading   = session === undefined
+  const isAuthed  = !!session && !!profile && profile.active === true
+  const isAdmin   = isAuthed && profile?.role === 'admin'
+  const isSuspended = !!session && !!profile && profile.active === false
 
   return (
-    <AuthContext.Provider value={{ user, isAuthed: !!user, login, logout }}>
+    <AuthContext.Provider value={{
+      user: session?.user ?? null,
+      profile,
+      isAuthed,
+      isAdmin,
+      isSuspended,
+      loading,
+      login,
+      logout,
+      inviteStudent,
+    }}>
       {children}
     </AuthContext.Provider>
   )

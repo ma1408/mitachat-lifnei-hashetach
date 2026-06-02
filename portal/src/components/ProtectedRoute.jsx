@@ -1,11 +1,32 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 
-// הגנה ויזואלית בלבד (MVP). מפנה ל-/login אם אין הזדהות שמורה.
-// שומר את היעד המבוקש כדי לחזור אליו אחרי כניסה.
 export default function ProtectedRoute({ children }) {
-  const { isAuthed } = useAuth()
+  const { isAuthed, isSuspended, loading } = useAuth()
   const location = useLocation()
+
+  if (loading) {
+    return (
+      <div className="auth-loading">
+        <span className="auth-loading__dot" />
+        <span className="auth-loading__dot" />
+        <span className="auth-loading__dot" />
+      </div>
+    )
+  }
+
+  if (isSuspended) {
+    return (
+      <div className="auth-suspended">
+        <div className="auth-suspended__card">
+          <p className="auth-suspended__title">הגישה הושהתה</p>
+          <p className="auth-suspended__text">
+            הגישה שלך לקורס הושהתה זמנית. לפרטים ולחידוש הגישה פנה לבעל הקורס.
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   if (!isAuthed) {
     return <Navigate to="/login" replace state={{ from: location.pathname }} />

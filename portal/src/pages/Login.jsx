@@ -1,38 +1,58 @@
 import { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { COURSE_TITLE, COURSE_SUBTITLE } from '../data/course'
 
+const ERROR_MESSAGES = {
+  'Invalid login credentials': 'אימייל או סיסמה שגויים.',
+  'Email not confirmed':       'האימייל טרם אומת. בדוק את תיבת הדואר שלך.',
+  'Too many requests':         'יותר מדי ניסיונות. נסה שוב מאוחר יותר.',
+}
+
+function translateError(msg = '') {
+  for (const [key, heb] of Object.entries(ERROR_MESSAGES)) {
+    if (msg.includes(key)) return heb
+  }
+  return 'שגיאה בהתחברות. בדוק את הפרטים ונסה שוב.'
+}
+
 export default function Login() {
   const { isAuthed, login } = useAuth()
-  const navigate = useNavigate()
-  const [email, setEmail] = useState('')
+  const navigate  = useNavigate()
+  const location  = useLocation()
+  const from      = location.state?.from || '/dashboard'
+
+  const [email,    setEmail]    = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+  const [error,    setError]    = useState('')
+  const [busy,     setBusy]     = useState(false)
 
-  // אם כבר מחוברים - לא נשארים במסך הכניסה
-  if (isAuthed) {
-    return <Navigate to="/dashboard" replace />
-  }
+  if (isAuthed) return <Navigate to={from} replace />
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     const cleanEmail = email.trim()
-    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)
 
-    if (!validEmail) {
-      setError('נא להזין כתובת אימייל תקינה')
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
+      setError('נא להזין כתובת אימייל תקינה.')
       return
     }
     if (!password) {
-      setError('נא להזין סיסמה')
+      setError('נא להזין סיסמה.')
       return
     }
 
+    setBusy(true)
     setError('')
-    login(cleanEmail)
-    // ניווט מפורש ל-dashboard אחרי שמירת ההזדהות
-    navigate('/dashboard', { replace: true })
+    const err = await login(cleanEmail, password)
+    setBusy(false)
+
+    if (err) {
+      setError(translateError(err.message))
+      return
+    }
+
+    navigate(from, { replace: true })
   }
 
   return (
@@ -58,6 +78,7 @@ export default function Login() {
               placeholder="name@example.com"
               dir="ltr"
               autoComplete="email"
+              disabled={busy}
             />
           </label>
 
@@ -71,24 +92,26 @@ export default function Login() {
               placeholder="••••••••"
               dir="ltr"
               autoComplete="current-password"
+              disabled={busy}
             />
           </label>
 
-          {error && <p className="login__error">{error}</p>}
+          {error && <p className="login__error" role="alert">{error}</p>}
 
-          <button type="submit" className="btn btn--gold btn--block">
-            כניסה לאזור התלמידים
+          <button
+            type="submit"
+            className="btn btn--gold btn--block"
+            disabled={busy}
+          >
+            {busy ? 'מתחבר...' : 'כניסה לאזור התלמידים'}
           </button>
 
           <p className="login__hint">
             הגישה מיועדת לתלמידים שרכשו את הקורס.
+            <br />
+            קיבלת קישור כניסה? לחץ עליו ישירות מהמייל.
           </p>
         </form>
-
-        <p className="login__disclaimer">
-          בשלב זה זו בקרת גישה לבדיקת MVP בלבד. הגנה אמיתית תופעל לאחר חיבור
-          Supabase Auth.
-        </p>
       </div>
     </div>
   )

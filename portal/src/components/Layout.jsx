@@ -3,21 +3,25 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { COURSE_TITLE } from '../data/course'
 
-const navItems = [
-  { to: '/dashboard', label: 'בית', icon: '⌂' },
-  { to: '/course', label: 'הקורס', icon: '☰' },
-  { to: '/glossary', label: 'מילון', icon: '◎' },
+const studentNavItems = [
+  { to: '/dashboard', label: 'בית',   icon: '⌂' },
+  { to: '/course',    label: 'הקורס', icon: '☰' },
+  { to: '/glossary',  label: 'מילון', icon: '◎' },
 ]
 
 export default function Layout() {
-  const { user, logout } = useAuth()
+  const { user, isAdmin, logout } = useAuth()
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
 
-  function handleLogout() {
-    logout()
+  async function handleLogout() {
+    await logout()
     navigate('/login', { replace: true })
   }
+
+  const navItems = isAdmin
+    ? [...studentNavItems, { to: '/admin', label: 'Admin', icon: '⚙' }]
+    : studentNavItems
 
   return (
     <div className="app-shell">
@@ -64,10 +68,6 @@ export default function Layout() {
       </main>
 
       <footer className="footer">
-        <p className="footer__note">
-          בשלב זה זו בקרת גישה לבדיקת MVP בלבד. הגנה אמיתית תופעל לאחר חיבור
-          Supabase Auth.
-        </p>
         {user?.email && (
           <p className="footer__user">מחובר/ת כ־{user.email}</p>
         )}
