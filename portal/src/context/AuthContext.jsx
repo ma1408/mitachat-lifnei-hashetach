@@ -30,7 +30,18 @@ export function AuthProvider({ children }) {
       .select('*')
       .eq('id', session.user.id)
       .single()
-      .then(({ data }) => setProfile(data ?? null))
+      .then(({ data, error }) => {
+        if (error) {
+          // לא בולעים שגיאה בשקט: מדפיסים לקונסול כדי שתקלה
+          // ב-profile / RLS policy / Supabase תהיה גלויה לאבחון.
+          console.error(
+            '[Auth] טעינת הפרופיל נכשלה. ' +
+            'ייתכן בעיית הרשאות (RLS policy) או חיבור ל-Supabase. פרטים:',
+            error.message || error
+          )
+        }
+        setProfile(data ?? null)
+      })
   }, [session])
 
   async function login(email, password) {
