@@ -1,94 +1,72 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
-import { useProgress } from '../context/ProgressContext.jsx'
-import ProgressBar from '../components/ProgressBar.jsx'
+import { CORE_PRINCIPLE } from '../data/course'
 import {
-  COURSE_TITLE,
-  CORE_PRINCIPLE,
-  modules,
-  lessons,
-  getLessonById,
-  TOTAL_LESSONS,
-} from '../data/course'
+  STARTER_FULL_NAME,
+  STARTER_TAGLINE,
+  STARTER_KIT_ITEMS,
+  STARTER_CORE_LESSON,
+} from '../data/product'
 
 export default function Dashboard() {
   const { user } = useAuth()
-  const { percent, completedCount, resumeLessonId } = useProgress()
-  const resumeLesson = getLessonById(resumeLessonId)
-  const firstName = (user?.email || '').split('@')[0]
 
   return (
     <div className="container stack-lg">
       <section className="hero-card">
         <p className="hero-card__eyebrow">אזור התלמידים</p>
         <h1 className="hero-card__title">
-          ברוך הבא ל־<span className="gold">{COURSE_TITLE}</span>
+          ברוך הבא ל־<span className="gold">{STARTER_FULL_NAME}</span>
         </h1>
+        <p className="hero-card__lead">{STARTER_TAGLINE}</p>
         <p className="hero-card__principle">“{CORE_PRINCIPLE}”</p>
 
-        <div className="hero-card__progress">
-          <div className="hero-card__progress-head">
-            <span>ההתקדמות שלך בקורס</span>
-            <span className="muted">
-              {completedCount} מתוך {TOTAL_LESSONS} שיעורים
-            </span>
-          </div>
-          <ProgressBar percent={percent} />
-        </div>
-
-        {resumeLesson && (
-          <Link to={`/lesson/${resumeLesson.id}`} className="btn btn--gold">
-            המשך מהשיעור האחרון · שיעור {resumeLesson.number}
-          </Link>
-        )}
+        <Link to={`/lesson/${STARTER_CORE_LESSON}`} className="btn btn--gold">
+          התחל — ארבעת שלבי הפענוח
+        </Link>
       </section>
 
       <section className="stack-sm">
         <div className="section-head">
-          <h2 className="section-head__title">המודולים שלך</h2>
-          <Link to="/course" className="link-gold">
-            לכל הקורס ←
-          </Link>
+          <h2 className="section-head__title">מה יש בערכת ההתחלה</h2>
         </div>
 
-        <div className="grid grid--modules">
-          {modules.map((m) => {
-            const total = m.lessons.length
+        <div className="grid grid--kit">
+          {STARTER_KIT_ITEMS.map((item) => {
+            const isSoon = item.status === 'soon'
+
+            if (isSoon || !item.to) {
+              return (
+                <article key={item.id} className="kit-card kit-card--soon">
+                  <span className="kit-card__icon" aria-hidden="true">{item.icon}</span>
+                  <div className="kit-card__body">
+                    <h3 className="kit-card__title">{item.title}</h3>
+                    <p className="kit-card__desc">{item.description}</p>
+                  </div>
+                  <span className="kit-card__badge">בקרוב</span>
+                </article>
+              )
+            }
+
             return (
-              <Link key={m.id} to="/course" className="module-card">
-                <span className="module-card__num">מודול {m.number}</span>
-                <h3 className="module-card__title">{m.title}</h3>
-                <p className="module-card__summary">{m.summary}</p>
-                <span className="module-card__meta">{total} שיעורים</span>
+              <Link key={item.id} to={item.to} className="kit-card">
+                <span className="kit-card__icon" aria-hidden="true">{item.icon}</span>
+                <div className="kit-card__body">
+                  <h3 className="kit-card__title">{item.title}</h3>
+                  <p className="kit-card__desc">{item.description}</p>
+                </div>
+                <span className="kit-card__cta" aria-hidden="true">←</span>
               </Link>
             )
           })}
         </div>
       </section>
 
-      <section className="grid grid--two">
-        <Link to="/glossary" className="action-card">
-          <span className="action-card__icon">◎</span>
-          <div>
-            <h3 className="action-card__title">מילון ואוצר מילים</h3>
-            <p className="action-card__text">
-              חזור לכל מושגי הקורס, פירושים, דוגמאות ושאלות חכמות לשיחה.
-            </p>
-          </div>
-          <span className="action-card__cta">פתח את המילון ←</span>
-        </Link>
-
-        <Link to="/course" className="action-card">
-          <span className="action-card__icon">☰</span>
-          <div>
-            <h3 className="action-card__title">תוכנית הקורס</h3>
-            <p className="action-card__text">
-              15 שיעורים ב-5 מודולים — הכל ממקום אחד.
-            </p>
-          </div>
-          <span className="action-card__cta">לתוכנית ←</span>
-        </Link>
-      </section>
+      {user?.email && (
+        <p className="muted dashboard__welcome">
+          מחובר/ת כ־{user.email}
+        </p>
+      )}
     </div>
   )
 }

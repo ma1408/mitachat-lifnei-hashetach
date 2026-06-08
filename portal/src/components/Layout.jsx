@@ -3,10 +3,11 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { COURSE_TITLE } from '../data/course'
 
+// ניווט במצב "ערכת התחלה". הקורס המלא (15 שיעורים) קיים בקוד
+// אך אינו מוצג בניווט הראשי בשלב זה.
 const studentNavItems = [
-  { to: '/dashboard', label: 'בית',   icon: '⌂' },
-  { to: '/course',    label: 'הקורס', icon: '☰' },
-  { to: '/glossary',  label: 'מילון', icon: '◎' },
+  { to: '/dashboard', label: 'ערכת ההתחלה', icon: '⌂' },
+  { to: '/glossary',  label: 'מילון',        icon: '◎' },
 ]
 
 export default function Layout() {
