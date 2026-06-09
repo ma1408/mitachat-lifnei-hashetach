@@ -28,7 +28,7 @@ export default function Dashboard() {
 
       <section className="stack-sm">
         <div className="section-head">
-          <h2 className="section-head__title">מה יש בערכת ההתחלה</h2>
+          <h2 className="section-head__title">מה יש בערכה</h2>
         </div>
 
         <div className="grid grid--kit">
@@ -43,7 +43,7 @@ export default function Dashboard() {
                     <h3 className="kit-card__title">{item.title}</h3>
                     <p className="kit-card__desc">{item.description}</p>
                   </div>
-                  <span className="kit-card__badge">בקרוב</span>
+                  <span className="kit-card__badge">ציר פיתוח</span>
                 </article>
               )
             }

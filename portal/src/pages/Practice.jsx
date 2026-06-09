@@ -12,7 +12,7 @@ export default function Practice() {
   return (
     <div className="container container--narrow stack-lg">
       <header className="page-head">
-        <p className="page-head__eyebrow">ערכת ההתחלה · תרגול עצמי</p>
+        <p className="page-head__eyebrow">הערכה · תרגול עצמי</p>
         <h1 className="page-head__title">תרגול: ארבעת השלבים בשיחה אמיתית</h1>
         <p className="page-head__lead">
           התרגיל הזה הופך את השיטה מידע לכלי. בחר שיחה אחת אמיתית מהשבוע האחרון —

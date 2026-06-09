@@ -5,7 +5,7 @@ export default function Intro() {
   return (
     <div className="container container--narrow stack-lg">
       <header className="page-head">
-        <p className="page-head__eyebrow">ערכת ההתחלה</p>
+        <p className="page-head__eyebrow">הערכה</p>
         <h1 className="page-head__title">איך להשתמש בערכה</h1>
         <p className="page-head__lead">
           ברוך הבא. הערכה הזו היא נקודת ההתחלה שלך לפענוח שפת גוף, סאבטקסט
@@ -17,7 +17,7 @@ export default function Intro() {
       <section className="lesson-block lesson-block--goal">
         <h2 className="lesson-block__label">מה תמצא בערכה</h2>
         <ul className="intro-list">
-          <li><strong>שיעור ליבה</strong> — ארבעת שלבי הפענוח, השיטה המרכזית של הקורס.</li>
+          <li><strong>שיעור ליבה</strong> — ארבעת שלבי הפענוח, השיטה המרכזית בערכה.</li>
           <li><strong>Study Guide</strong> — סיכום מסודר, נקודות מפתח ושאלות חזרה.</li>
           <li><strong>תרגול עצמי</strong> — תרגיל מעשי ליישום מיידי בשיחה אמיתית.</li>
           <li><strong>מילון מושגים</strong> — כל מושג עם פירוש, דוגמה ושאלה חכמה.</li>

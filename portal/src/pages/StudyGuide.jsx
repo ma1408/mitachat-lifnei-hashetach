@@ -24,7 +24,7 @@ export default function StudyGuide() {
   return (
     <div className="container container--narrow stack-lg">
       <header className="page-head">
-        <p className="page-head__eyebrow">ערכת ההתחלה · Study Guide</p>
+        <p className="page-head__eyebrow">הערכה · Study Guide</p>
         <h1 className="page-head__title">ארבעת שלבי הפענוח</h1>
         <p className="page-head__lead">
           מדריך לימוד מסודר לשיעור הליבה — לחזרה לפני ואחרי הצפייה.
@@ -34,7 +34,7 @@ export default function StudyGuide() {
       <section className="lesson-block">
         <h2 className="lesson-block__label">סיכום קצר</h2>
         <p>
-          השיעור מציג את שיטת העבודה המרכזית של הקורס, שמעבירה אותנו משימוש
+          השיעור מציג את שיטת העבודה המרכזית בערכה, שמעבירה אותנו משימוש
           בתחושות בטן לתהליך בדיקה מסודר. המטרה אינה לנחש מה אדם חושב או לקבוע
           עובדות, אלא להבין היכן השיחה זקוקה לשאלה טובה יותר. סימן בודד אינו אומר
           דבר בפני עצמו; המשמעות מתחילה רק כשמזהים שינוי שמופיע בתוך הקשר מסוים.
@@ -79,7 +79,7 @@ export default function StudyGuide() {
       <section className="lesson-block lesson-block--goal">
         <h2 className="lesson-block__label">לפני הצפייה בשיעור</h2>
         <p>
-          בשיעור תלמד את מודל העבודה שילווה אותך לאורך כל הקורס. במקום לנחש מה הצד
+          בשיעור תלמד את מודל העבודה שילווה אותך לאורך כל הערכה. במקום לנחש מה הצד
           השני חושב, תשתמש בפילטר של ארבעה שלבים: בייסליין, שינוי, הקשר ושאלה טובה
           יותר — כדי להפוך תחושת בטן מעורפלת לכלי עבודה בשיחה.
         </p>

@@ -22,7 +22,7 @@ export default function Lesson() {
   }, [lesson, setLastLesson])
 
   if (!lesson) {
-    return <Navigate to="/course" replace />
+    return <Navigate to="/dashboard" replace />
   }
 
   const module = getModuleById(lesson.moduleId)
@@ -33,8 +33,8 @@ export default function Lesson() {
   return (
     <div className="container container--narrow stack-lg">
       <nav className="breadcrumbs">
-        <Link to="/course" className="link-gold">
-          הקורס
+        <Link to="/dashboard" className="link-gold">
+          הערכה
         </Link>
         <span aria-hidden="true">·</span>
         <span className="muted">מודול {module.number} · {module.title}</span>
@@ -120,8 +120,8 @@ export default function Lesson() {
             לשיעור הבא ←
           </Link>
         ) : (
-          <Link to="/course" className="btn btn--outline">
-            סיימת את הקורס · חזרה לתוכנית ←
+          <Link to="/dashboard" className="btn btn--outline">
+            סיימת את שיעור הליבה · חזרה לערכה ←
           </Link>
         )}
       </div>

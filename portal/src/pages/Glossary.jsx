@@ -51,7 +51,7 @@ export default function Glossary() {
   return (
     <div className="container stack-lg">
       <header className="page-head">
-        <p className="page-head__eyebrow">חומרי הקורס</p>
+        <p className="page-head__eyebrow">חומרי הערכה</p>
         <h1 className="page-head__title">מילון ואוצר מילים</h1>
         <p className="page-head__lead">
           המושגים המרכזיים שיעזרו לך להבין מה קורה מתחת לפני השטח של השיחה.

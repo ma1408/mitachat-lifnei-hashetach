@@ -17,7 +17,7 @@ export default function Checklist() {
   return (
     <div className="container container--narrow stack-lg">
       <header className="page-head">
-        <p className="page-head__eyebrow">ערכת ההתחלה · צ׳ק ליסט</p>
+        <p className="page-head__eyebrow">הערכה · צ׳ק ליסט</p>
         <h1 className="page-head__title">צ׳ק ליסט לשיחה</h1>
         <p className="page-head__lead">
           ארבעת השלבים כרשימה מעשית — קצרה מספיק כדי לקחת לכל שיחה.

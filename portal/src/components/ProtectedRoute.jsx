@@ -21,7 +21,7 @@ export default function ProtectedRoute({ children }) {
         <div className="auth-suspended__card">
           <p className="auth-suspended__title">הגישה הושהתה</p>
           <p className="auth-suspended__text">
-            הגישה שלך לקורס הושהתה זמנית. לפרטים ולחידוש הגישה פנה לבעל הקורס.
+            הגישה שלך לערכה הושהתה זמנית. לפרטים ולחידוש הגישה פנה לבעל הערכה.
           </p>
         </div>
       </div>
