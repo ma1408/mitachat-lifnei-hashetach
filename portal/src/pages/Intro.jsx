@@ -28,7 +28,7 @@ export default function Intro() {
       <section className="lesson-block">
         <h2 className="lesson-block__label">סדר העבודה המומלץ</h2>
         <ol className="intro-steps">
-          <li>התחל מ<strong>שיעור הליבה</strong> — צפה והבן את ארבעת השלבים.</li>
+          <li>התחל מ<strong>שיעור הליבה</strong> — התחל והבן את ארבעת השלבים.</li>
           <li>עבור על ה<strong>Study Guide</strong> כדי לחזק את מה שלמדת.</li>
           <li>בצע את ה<strong>תרגול העצמי</strong> על שיחה אחת אמיתית.</li>
           <li>שמור את ה<strong>צ׳ק ליסט</strong> בהישג יד לשיחות הבאות.</li>

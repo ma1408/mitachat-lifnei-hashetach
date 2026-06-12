@@ -48,18 +48,14 @@ export default function Lesson() {
         </h1>
       </header>
 
-      {/* אזור וידאו */}
-      <div className="video-frame">
-        {lesson.videoUrl ? (
-          <video controls src={lesson.videoUrl} className="video-frame__player" />
-        ) : (
-          <div className="video-frame__placeholder">
-            <span className="video-frame__icon" aria-hidden="true">▶</span>
-            <p>הווידאו של השיעור יתווסף כאן</p>
-            <span className="muted">Placeholder · ממתין לקובץ וידאו</span>
-          </div>
-        )}
-      </div>
+      {/* פתיח יחידת העבודה — תוכן כתוב, ללא וידאו */}
+      <section className="lesson-block lesson-block--insight">
+        <h2 className="lesson-block__label">יחידת עבודה כתובה</h2>
+        <p>
+          כאן מתחילה שיטת העבודה. קרא, עצור ויישם — כדי להבין טוב יותר מה קורה
+          מתחת לפני השטח בשיחות אמיתיות.
+        </p>
+      </section>
 
       <section className="lesson-block lesson-block--goal">
         <h2 className="lesson-block__label">מטרת השיעור</h2>

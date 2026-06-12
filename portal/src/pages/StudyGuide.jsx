@@ -27,7 +27,7 @@ export default function StudyGuide() {
         <p className="page-head__eyebrow">הערכה · Study Guide</p>
         <h1 className="page-head__title">ארבעת שלבי הפענוח</h1>
         <p className="page-head__lead">
-          מדריך לימוד מסודר לשיעור הליבה — לחזרה לפני ואחרי הצפייה.
+          מדריך לימוד מסודר לשיעור הליבה — לחזרה לפני ואחרי העבודה עם השיעור.
         </p>
       </header>
 
@@ -77,7 +77,7 @@ export default function StudyGuide() {
       </section>
 
       <section className="lesson-block lesson-block--goal">
-        <h2 className="lesson-block__label">לפני הצפייה בשיעור</h2>
+        <h2 className="lesson-block__label">לפני העבודה עם שיעור הליבה</h2>
         <p>
           בשיעור תלמד את מודל העבודה שילווה אותך לאורך כל הערכה. במקום לנחש מה הצד
           השני חושב, תשתמש בפילטר של ארבעה שלבים: בייסליין, שינוי, הקשר ושאלה טובה
@@ -86,7 +86,7 @@ export default function StudyGuide() {
       </section>
 
       <section className="lesson-block">
-        <h2 className="lesson-block__label">אחרי הצפייה בשיעור</h2>
+        <h2 className="lesson-block__label">אחרי העבודה עם שיעור הליבה</h2>
         <p>
           שפת גוף אינה מילון של סימנים אלא השוואה מתמדת בין המצב הרגיל לשינוי
           שמופיע בתוך הקשר. בכל פעם שאתה מזהה שמשהו לא מסתדר בשיחה — אל תקפוץ
