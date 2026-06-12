@@ -37,7 +37,7 @@ export default function Lesson() {
           הערכה
         </Link>
         <span aria-hidden="true">·</span>
-        <span className="muted">מודול {module.number} · {module.title}</span>
+        <Link to="/course" className="muted">מודול {module.number} · {module.title}</Link>
       </nav>
 
       <header className="lesson-head">

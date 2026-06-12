@@ -7,6 +7,7 @@ import { COURSE_TITLE } from '../data/course'
 // בניווט הראשי בתצוגה זו.
 const studentNavItems = [
   { to: '/dashboard', label: 'הערכה', icon: '⌂' },
+  { to: '/course',    label: 'היחידות', icon: '▤' },
   { to: '/glossary',  label: 'מילון', icon: '◎' },
 ]
 

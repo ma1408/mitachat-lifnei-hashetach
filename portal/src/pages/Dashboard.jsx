@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
-import { CORE_PRINCIPLE } from '../data/course'
+import { useProgress } from '../context/ProgressContext.jsx'
+import { CORE_PRINCIPLE, getLessonById } from '../data/course'
+import ProgressBar from '../components/ProgressBar.jsx'
 import {
   STARTER_FULL_NAME,
   STARTER_TAGLINE,
@@ -10,6 +12,9 @@ import {
 
 export default function Dashboard() {
   const { user } = useAuth()
+  const { lastLessonId, completedCount, percent, resumeLessonId } = useProgress()
+  const hasStarted = lastLessonId || completedCount > 0
+  const resumeLesson = getLessonById(resumeLessonId)
 
   return (
     <div className="container stack-lg">
@@ -19,11 +24,28 @@ export default function Dashboard() {
           ברוך הבא ל־<span className="gold">{STARTER_FULL_NAME}</span>
         </h1>
         <p className="hero-card__lead">{STARTER_TAGLINE}</p>
-        <p className="hero-card__principle">“{CORE_PRINCIPLE}”</p>
+        <p className="hero-card__principle">&ldquo;{CORE_PRINCIPLE}&rdquo;</p>
 
-        <Link to={`/lesson/${STARTER_CORE_LESSON}`} className="btn btn--gold">
-          התחל להבין מה קורה בשיחה
-        </Link>
+        {hasStarted ? (
+          <>
+            <div className="hero-card__progress">
+              <span className="muted">ההתקדמות שלך · {completedCount} מתוך 15 יחידות הושלמו</span>
+              <ProgressBar percent={percent} />
+            </div>
+            <div className="lesson-actions">
+              <Link to={`/lesson/${resumeLessonId}`} className="btn btn--gold">
+                המשך מאיפה שעצרת — יחידה {resumeLesson?.number}: {resumeLesson?.title}
+              </Link>
+              <Link to="/course" className="btn btn--outline">
+                לכל היחידות ←
+              </Link>
+            </div>
+          </>
+        ) : (
+          <Link to={`/lesson/${STARTER_CORE_LESSON}`} className="btn btn--gold">
+            התחל להבין מה קורה בשיחה
+          </Link>
+        )}
       </section>
 
       <section className="stack-sm">

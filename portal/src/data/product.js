@@ -38,6 +38,14 @@ export const STARTER_KIT_ITEMS = [
     status: 'ready',
   },
   {
+    id: 'lesson-map',
+    icon: '▤',
+    title: 'ספריית היחידות',
+    description: 'כל 15 היחידות הכתובות במקום אחד — איפה אתה, מה הושלם ומה נשאר.',
+    to: '/course',
+    status: 'ready',
+  },
+  {
     id: 'study-guide',
     icon: '◈',
     title: 'מדריך עבודה',

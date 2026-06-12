@@ -9,8 +9,8 @@ export default function Course() {
   return (
     <div className="container stack-lg">
       <header className="page-head">
-        <p className="page-head__eyebrow">תוכנית הקורס</p>
-        <h1 className="page-head__title">5 מודולים · {TOTAL_LESSONS} שיעורים</h1>
+        <p className="page-head__eyebrow">ספריית היחידות</p>
+        <h1 className="page-head__title">5 מודולים · {TOTAL_LESSONS} יחידות</h1>
         <div className="page-head__progress">
           <ProgressBar percent={percent} />
           <span className="muted">
