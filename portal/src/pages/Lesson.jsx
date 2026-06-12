@@ -43,7 +43,7 @@ export default function Lesson() {
       <header className="lesson-head">
         <span className="lesson-head__module">{module.title}</span>
         <h1 className="lesson-head__title">
-          <span className="lesson-head__num">שיעור {lesson.number}</span>
+          <span className="lesson-head__num">יחידה {lesson.number}</span>
           {lesson.title}
         </h1>
       </header>
@@ -58,12 +58,12 @@ export default function Lesson() {
       </section>
 
       <section className="lesson-block lesson-block--goal">
-        <h2 className="lesson-block__label">מטרת השיעור</h2>
+        <h2 className="lesson-block__label">מטרת היחידה</h2>
         <p>{lesson.goal}</p>
       </section>
 
       <section className="lesson-block">
-        <h2 className="lesson-block__label">סיכום השיעור</h2>
+        <h2 className="lesson-block__label">סיכום היחידה</h2>
         <p>{lesson.summary}</p>
       </section>
 
@@ -79,7 +79,7 @@ export default function Lesson() {
 
       {lessonTerms.length > 0 && (
         <section className="lesson-block">
-          <h2 className="lesson-block__label">מושגים מתוך השיעור</h2>
+          <h2 className="lesson-block__label">מושגים מתוך היחידה</h2>
           <ul className="lesson-terms">
             {lessonTerms.map((t) => (
               <li key={t.id} className="lesson-term">
@@ -108,16 +108,16 @@ export default function Lesson() {
           className={`btn ${completed ? 'btn--ghost' : 'btn--gold'}`}
           onClick={() => toggleCompleted(lesson.id)}
         >
-          {completed ? '✓ הושלם · בטל סימון' : 'סמן שיעור כהושלם'}
+          {completed ? '✓ הושלם · בטל סימון' : 'סמן יחידה כהושלמה'}
         </button>
 
         {nextId ? (
           <Link to={`/lesson/${nextId}`} className="btn btn--outline">
-            לשיעור הבא ←
+            ליחידה הבאה ←
           </Link>
         ) : (
           <Link to="/dashboard" className="btn btn--outline">
-            סיימת את שיעור הליבה · חזרה לערכה ←
+            סיימת את יחידת הליבה · חזרה לערכה ←
           </Link>
         )}
       </div>

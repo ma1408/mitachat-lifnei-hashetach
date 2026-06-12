@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
-import { COURSE_TITLE, COURSE_SUBTITLE } from '../data/course'
+import { COURSE_TITLE } from '../data/course'
 
 const ERROR_MESSAGES = {
   'Invalid login credentials': 'אימייל או סיסמה שגויים.',
@@ -62,10 +62,13 @@ export default function Login() {
         <div className="login__brand">
           <span className="login__mark" aria-hidden="true" />
           <h1 className="login__title">{COURSE_TITLE}</h1>
-          <p className="login__subtitle">{COURSE_SUBTITLE}</p>
+          <p className="login__subtitle">
+            להבין מה קורה מתחת לפני השטח בשיחות אמיתיות — לזהות פערים,
+            ולשאול שאלה טובה יותר.
+          </p>
         </div>
 
-        <h2 className="login__heading">כניסה לאזור התלמידים</h2>
+        <h2 className="login__heading">כניסה לערכת העבודה</h2>
 
         <form className="login__form" onSubmit={handleSubmit} noValidate>
           <label className="field">
@@ -103,13 +106,17 @@ export default function Login() {
             className="btn btn--gold btn--block"
             disabled={busy}
           >
-            {busy ? 'מתחבר...' : 'כניסה לאזור התלמידים'}
+            {busy ? 'מתחבר...' : 'כניסה לערכת העבודה'}
           </button>
 
           <p className="login__hint">
-            הגישה מיועדת לתלמידים שרכשו את הערכה.
+            הגישה מיועדת למי שרכש את הערכה.
             <br />
             קיבלת קישור כניסה? לחץ עליו ישירות מהמייל.
+          </p>
+
+          <p className="login__disclaimer">
+            הערכה אינה מיועדת לזיהוי שקרים, קריאת מחשבות או אבחון אנשים.
           </p>
         </form>
       </div>
