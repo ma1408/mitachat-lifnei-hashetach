@@ -4,7 +4,7 @@
 
 export const COURSE_TITLE = 'מתחת לפני השטח'
 export const COURSE_SUBTITLE =
-  'פענוח שפת גוף, סאבטקסט והתנהגות בשיחות אמיתיות'
+  'להבין טוב יותר מה קרה בשיחה — שינוי, הקשר ושאלה טובה יותר'
 
 // עיקרון-העל של הקורס, חוזר לאורך השיעורים
 export const CORE_PRINCIPLE =
