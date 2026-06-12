@@ -30,8 +30,16 @@ const STEPS = [
   },
 ]
 
+const EMPTY_ANSWERS = { baseline: '', change: '', context: '', question: '' }
+
 export default function Practice() {
-  const [answers, setAnswers] = useState({ baseline: '', change: '', context: '', question: '' })
+  const [answers, setAnswers] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('practice-answers')) || EMPTY_ANSWERS
+    } catch {
+      return EMPTY_ANSWERS
+    }
+  })
   const [saved, setSaved] = useState(false)
 
   function handleChange(key, value) {
