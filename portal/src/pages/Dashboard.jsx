@@ -14,7 +14,7 @@ export default function Dashboard() {
   return (
     <div className="container stack-lg">
       <section className="hero-card">
-        <p className="hero-card__eyebrow">אזור התלמידים</p>
+        <p className="hero-card__eyebrow">ערכת העבודה שלך</p>
         <h1 className="hero-card__title">
           ברוך הבא ל־<span className="gold">{STARTER_FULL_NAME}</span>
         </h1>
@@ -22,7 +22,7 @@ export default function Dashboard() {
         <p className="hero-card__principle">“{CORE_PRINCIPLE}”</p>
 
         <Link to={`/lesson/${STARTER_CORE_LESSON}`} className="btn btn--gold">
-          התחל — ארבעת שלבי הפענוח
+          התחל להבין מה קורה בשיחה
         </Link>
       </section>
 
