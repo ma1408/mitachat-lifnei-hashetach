@@ -1460,3 +1460,372 @@ textarea:focus-visible {
   outline: none;
   box-shadow: 0 0 0 1px var(--gold);
 }
+
+/* =========================================================
+   Sprint A — Workbook · Cases · Guide (תוספות בלבד)
+   ========================================================= */
+
+/* ── תיק שיחה: כרטיסי-דף ── */
+.wb-pages {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 8vh, 72px);
+}
+.wb-page {
+  background: var(--surface-2);
+  border: 1px solid var(--glass-border);
+  border-right: 3px solid var(--glass-border-strong);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+}
+.wb-page--insight {
+  border-right-color: var(--gold);
+  background: rgba(201, 168, 106, 0.07);
+}
+.wb-page__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.wb-page__num {
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.wb-page__title {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  margin: 0;
+  color: var(--text);
+}
+.wb-page__tag {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+.wb-page__prompt {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+.wb-page__guides {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin: 8px 0 0;
+}
+
+/* ── שדה-נייר: רק קו תחתון ── */
+.wb-field {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--glass-border);
+  border-radius: 0;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 16px; /* מונע zoom אוטומטי ב-iOS */
+  line-height: 1.7;
+  padding: 6px 2px 10px;
+  resize: none;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.wb-field::placeholder { color: #6f6757; }
+.wb-field:focus,
+.wb-field:focus-visible {
+  outline: none;
+  box-shadow: none;
+  border-bottom-color: var(--gold);
+}
+.wb-field--line { min-height: 2.2em; }
+
+/* ── צ'יפים לשאלה ── */
+.wb-checks { margin-top: 14px; }
+.wb-checks__row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.wb-chip {
+  min-height: 44px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border-strong);
+  background: transparent;
+  color: var(--text-soft);
+  font-family: inherit;
+  font-size: 0.88rem;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.wb-chip--on {
+  border-color: var(--gold);
+  background: rgba(201, 168, 106, 0.14);
+  color: var(--gold-bright);
+}
+.wb-checks__hint {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin: 8px 0 0;
+}
+
+/* ── שורת שמירה ── */
+.wb-save-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.wb-save-bar__status {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  min-height: 1.2em;
+  margin: 0;
+}
+.wb-save-bar__note {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  margin: 0;
+}
+.wb-resume-row {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  background: rgba(201, 168, 106, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+.wb-resume-row__hint { color: var(--text-muted); }
+.wb-resume-row__restart {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+  padding: 0;
+}
+.wb-storage-warn {
+  color: #e3a08a;
+  font-size: 0.86rem;
+  background: rgba(227, 160, 138, 0.1);
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(227, 160, 138, 0.25);
+}
+
+/* ── חדר התיקים ── */
+.wb-empty {
+  text-align: center;
+  background: var(--surface-2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 48px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.wb-empty__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin: 0;
+}
+.wb-empty__text { color: var(--text-soft); margin: 0; }
+.wb-empty__note { color: var(--text-muted); font-size: 0.82rem; margin: 0; }
+.wb-archive-actions { display: flex; justify-content: center; }
+.wb-entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wb-entry {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.wb-entry__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  text-align: right;
+}
+.wb-entry__title { flex: 1; }
+.wb-entry__date { color: var(--text-muted); font-size: 0.8rem; flex-shrink: 0; }
+.wb-entry__arrow { color: var(--text-muted); flex-shrink: 0; }
+.wb-entry__body {
+  padding: 4px 16px 16px;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.wb-entry__page-title {
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 10px 0 4px;
+}
+.wb-entry__page-text {
+  color: var(--text-soft);
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+.wb-entry__checks { color: var(--text-muted); font-size: 0.8rem; margin: 4px 0 0; }
+.wb-entry__actions { display: flex; gap: 10px; margin-top: 6px; }
+
+/* ── תיקי הדגמה ── */
+.cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.case-card {
+  display: block;
+  background: var(--surface-2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color .2s, transform .15s;
+}
+.case-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.case-card__arena {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+.case-card__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 12px 0 6px;
+}
+.case-card__teaser { color: var(--text-soft); font-size: 0.92rem; margin: 0 0 12px; }
+.case-card__cta { font-size: 0.88rem; }
+
+.case-transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.case-line {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background .3s;
+}
+.case-line__speaker { color: var(--text); }
+.case-line--shift {
+  background: rgba(201, 168, 106, 0.12);
+  border-right: 2px solid var(--gold);
+}
+.case-points {
+  margin: 0;
+  padding-right: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+.case-tempting {
+  color: var(--text);
+  font-weight: 600;
+}
+.case-questions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.case-question {
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  border: 1px solid var(--glass-border);
+}
+.case-question--bad { background: rgba(227, 160, 138, 0.07); }
+.case-question--good {
+  background: rgba(201, 168, 106, 0.08);
+  border-color: var(--glass-border-strong);
+}
+.case-question__label {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.case-question--good .case-question__label { color: var(--gold); }
+.case-question p { margin: 0; color: var(--text-soft); line-height: 1.6; }
+.case-why { color: var(--text-muted); font-size: 0.88rem; }
+.reveal-gate { text-align: center; }
+.reveal-gate .btn { margin-top: 10px; }
+
+/* ── מסלול 7 ימים (Guide) ── */
+.day-plan {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.day-plan__item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.day-plan__num {
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+.day-plan__title { margin: 0 0 4px; color: var(--text); font-size: 0.94rem; }
+.day-plan__links { margin: 0; font-size: 0.84rem; }
+
+/* ── מובייל ── */
+@media (max-width: 640px) {
+  .wb-page { padding: 20px 16px; }
+  .case-questions { grid-template-columns: 1fr; }
+  .wb-save-bar {
+    position: sticky;
+    bottom: 0;
+    padding: 14px 0 18px;
+    background: rgba(10, 9, 8, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .wb-entry__head { flex-wrap: wrap; }
+}

@@ -113,6 +113,9 @@ export default function Practice() {
         >
           {saved ? '✓ נשמר' : 'שמור תרגיל'}
         </button>
+        <Link to="/workbook/new" className="btn btn--outline">
+          פתח תיק במחברת העבודה ←
+        </Link>
         <Link to="/checklist" className="btn btn--outline">
           לצ׳ק ליסט לשיחה
         </Link>

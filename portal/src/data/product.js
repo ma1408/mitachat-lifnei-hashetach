@@ -24,9 +24,9 @@ export const STARTER_KIT_ITEMS = [
   {
     id: 'intro',
     icon: '✦',
-    title: 'איך להשתמש בערכה',
-    description: 'פתיחה קצרה — מה יש בערכה ואיך להפיק ממנה את המרב.',
-    to: '/intro',
+    title: 'איך עובדים עם הערכה',
+    description: 'המדריך: שיטת העבודה, הגבולות, ומסלול 7 ימים להתחלה.',
+    to: '/guide',
     status: 'ready',
   },
   {
@@ -78,11 +78,19 @@ export const STARTER_KIT_ITEMS = [
     status: 'ready',
   },
   {
-    id: 'full-course',
-    icon: '➜',
-    title: 'ציר פיתוח',
-    description: 'אנחנו ממשיכים לשפר ולעדכן את הערכה לאורך זמן.',
-    to: null,
-    status: 'soon',
+    id: 'workbook',
+    icon: '✎',
+    title: 'מחברת העבודה',
+    description: 'תיקי שיחה על השיחות האמיתיות שלך — כאן נוצר הערך של הערכה.',
+    to: '/workbook',
+    status: 'ready',
+  },
+  {
+    id: 'cases',
+    icon: '◆',
+    title: 'תיקי הדגמה',
+    description: 'שתי שיחות אמיתיות מפורקות צעד-צעד — לראות את השיטה לפני שעובדים.',
+    to: '/cases',
+    status: 'ready',
   },
 ]

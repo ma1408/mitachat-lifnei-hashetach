@@ -1,0 +1,95 @@
+// תבנית תיק השיחה — 8 דפים.
+// variant: 'text' = textarea רגיל · 'line' = שורה אחת ·
+// 'question-check' = textarea + שלושה צ'יפים לסימון.
+// המטאפורה: דפים בתוך תיק, לא שדות בטופס.
+
+export const WORKBOOK_PAGES = [
+  {
+    id: 'context',
+    step: 1,
+    title: 'השיחה',
+    prompt: 'עם מי דיברת ועל מה? משפט או שניים, רק כדי שתזכור את התיק הזה.',
+    placeholder: 'שיחה עם דנה אתמול בערב, על התוכניות לסופ״ש',
+    required: false,
+    variant: 'text',
+  },
+  {
+    id: 'baseline',
+    step: 2,
+    title: 'הרגיל',
+    tag: 'בשפת הערכה: בייסליין',
+    prompt: 'איך האדם נראה והתנהג כשהשיחה הייתה רגילה?',
+    placeholder: 'דיברה בקצב רגוע, הסתכלה עליי, ישבה נינוחה על הספה',
+    guidingQuestions: ['קצב הדיבור', 'המבט', 'הישיבה או העמידה'],
+    required: true,
+    variant: 'text',
+  },
+  {
+    id: 'trigger',
+    step: 3,
+    title: 'הרגע',
+    prompt: 'הרגע שבו משהו השתנה. מה נאמר ממש לפני?',
+    placeholder: 'בדיוק כששאלתי אם נסגור את הסופ״ש עם החברים שלה',
+    required: false,
+    variant: 'text',
+  },
+  {
+    id: 'saw',
+    step: 4,
+    title: 'מה ראיתי',
+    prompt: "תאר כמו מצלמה. 'המבט ירד והקצב האט' — לא 'הוא נלחץ'.",
+    placeholder: 'המבט ירד לטלפון, התשובות התקצרו, הגב נשען אחורה',
+    required: false,
+    variant: 'text',
+  },
+  {
+    id: 'innocent',
+    step: 5,
+    title: 'אולי בכלל…',
+    prompt: 'שני הסברים תמימים למה שראית. גם אם אתה לא מאמין בהם — תכתוב אותם.',
+    placeholder: 'אולי היא פשוט עייפה מהיום. אולי חיכתה להודעה חשובה בטלפון.',
+    required: false,
+    variant: 'text',
+  },
+  {
+    id: 'dontConclude',
+    step: 6,
+    title: 'מה אני לא קובע',
+    prompt: 'המסקנה שמתחשק לקפוץ אליה — ושאתה לא מסיק. תכתוב אותה כדי לשחרר אותה.',
+    placeholder: 'מתחשק לי להחליט שהיא לא רוצה לבוא. אני לא קובע את זה.',
+    required: false,
+    variant: 'text',
+  },
+  {
+    id: 'question',
+    step: 7,
+    title: 'השאלה שלי',
+    prompt: 'שאלה אחת שאפשר לשאול — כזו שפותחת את הנושא במקום לסגור אותו.',
+    placeholder: '"הסופ״ש הזה פחות מסתדר לך, או שיש משהו אחר שכדאי שנדבר עליו?"',
+    required: false,
+    variant: 'question-check',
+    checks: ['רכה', 'לא מאשימה', 'פותחת'],
+    checksHint: 'סמן מה שמתקיים. אם לא הכול — נסח שוב. בלי לחץ.',
+  },
+  {
+    id: 'nextTime',
+    step: 8,
+    title: 'בפעם הבאה',
+    prompt: 'משפט אחד לעצמך — מה תיקח מהתיק הזה לשיחה הבאה.',
+    placeholder: 'לשים לב מתי התשובות מתקצרות, ולשאול באותו רגע',
+    required: false,
+    variant: 'line',
+  },
+]
+
+export const EMPTY_FIELDS = {
+  context: '',
+  baseline: '',
+  trigger: '',
+  saw: '',
+  innocent: '',
+  dontConclude: '',
+  question: '',
+  checks: [false, false, false],
+  nextTime: '',
+}
