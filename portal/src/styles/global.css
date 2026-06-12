@@ -1,3 +1,16 @@
+@import "tailwindcss";
+
+@keyframes accordion-down {
+  from { height: 0 }
+  to { height: var(--radix-accordion-content-height) }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height) }
+  to { height: 0 }
+}
+.animate-accordion-down { animation: accordion-down 0.2s ease-out }
+.animate-accordion-up   { animation: accordion-up   0.2s ease-out }
+
 /* =========================================================
    מתחת לפני השטח · אזור התלמידים
    עיצוב כהה, קולנועי, פרימיום · זהב עדין · זכוכית · עומק
@@ -1380,4 +1393,70 @@ p { margin: 0; }
   .mainnav__logout { margin: 6px 0 0; }
   .hero-card, .module-block { padding: 24px 20px; }
   .lesson-actions .btn { flex: 1; }
+}
+
+/* ── חומרים להורדה (Lesson.jsx) ── */
+.download-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.download-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(201,168,76,0.04);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.download-link:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+.download-icon { font-size: 1.4rem; flex-shrink: 0; }
+.download-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  text-align: right;
+}
+.download-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.download-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.download-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+
+/* ── Textarea (Practice.jsx) ── */
+.practice-step { align-items: flex-start; }
+.practice-step textarea {
+  font-family: inherit;
+}
+
+/* ── shadcn Textarea focus ring override ── */
+textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--gold);
 }

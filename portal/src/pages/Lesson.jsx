@@ -7,6 +7,7 @@ import {
   getNextLessonId,
 } from '../data/course'
 import { getTermsByLesson } from '../data/glossary'
+import { getDownloadById } from '../data/downloads'
 
 export default function Lesson() {
   const { lessonId } = useParams()
@@ -29,6 +30,9 @@ export default function Lesson() {
   const nextId = getNextLessonId(lesson.id)
   const completed = isCompleted(lesson.id)
   const lessonTerms = getTermsByLesson(lesson.id).slice(0, 4)
+  const lessonDownloads = (lesson.downloads || [])
+    .map(id => getDownloadById(id))
+    .filter(d => d && d.available)
 
   return (
     <div className="container container--narrow stack-lg">
@@ -100,6 +104,31 @@ export default function Lesson() {
           <Link to="/glossary" className="lesson-terms__more link-gold">
             לכל המושגים במילון ←
           </Link>
+        </section>
+      )}
+
+      {lessonDownloads.length > 0 && (
+        <section className="lesson-block">
+          <h2 className="lesson-block__label">חומרים להורדה</h2>
+          <ul className="download-list">
+            {lessonDownloads.map(d => (
+              <li key={d.id} className="download-item">
+                <a
+                  href={d.file}
+                  download
+                  className="download-link"
+                  aria-label={`הורד ${d.title}`}
+                >
+                  <span className="download-icon" aria-hidden="true">{d.icon}</span>
+                  <div className="download-info">
+                    <span className="download-title">{d.title}</span>
+                    <span className="download-desc">{d.description}</span>
+                  </div>
+                  <span className="download-badge">{d.type}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
