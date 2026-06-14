@@ -17,7 +17,7 @@ function translateError(msg = '') {
 }
 
 export default function Login() {
-  const { isAuthed, login } = useAuth()
+  const { isAuthed, login, isRecovery } = useAuth()
   const navigate  = useNavigate()
   const location  = useLocation()
   const from      = location.state?.from || '/dashboard'
@@ -27,6 +27,7 @@ export default function Login() {
   const [error,    setError]    = useState('')
   const [busy,     setBusy]     = useState(false)
 
+  if (isRecovery) return <Navigate to="/reset-password" replace />
   if (isAuthed) return <Navigate to={from} replace />
 
   async function handleSubmit(e) {

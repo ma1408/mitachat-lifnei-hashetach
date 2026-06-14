@@ -16,6 +16,7 @@ import Workbook from './pages/Workbook.jsx'
 import WorkbookNew from './pages/WorkbookNew.jsx'
 import Cases from './pages/Cases.jsx'
 import CaseStudy from './pages/CaseStudy.jsx'
+import ResetPassword from './pages/ResetPassword.jsx'
 import { WorkbookProvider } from './context/WorkbookContext.jsx'
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
     <WorkbookProvider>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
 
         {/* Admin — הגנה כפולה: מחובר + role=admin */}
         <Route

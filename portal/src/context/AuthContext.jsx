@@ -6,6 +6,7 @@ const AuthContext = createContext(null)
 export function AuthProvider({ children }) {
   const [session, setSession]   = useState(undefined) // undefined = טוען
   const [profile, setProfile]   = useState(null)
+  const [isRecovery, setIsRecovery] = useState(false)
 
   // האזנה לשינויי session
   useEffect(() => {
@@ -14,7 +15,11 @@ export function AuthProvider({ children }) {
     })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => setSession(session ?? null)
+      (_event, session) => {
+        if (_event === 'PASSWORD_RECOVERY') setIsRecovery(true)
+        if (_event === 'USER_UPDATED' || _event === 'SIGNED_OUT') setIsRecovery(false)
+        setSession(session ?? null)
+      }
     )
     return () => subscription.unsubscribe()
   }, [])
@@ -77,6 +82,7 @@ export function AuthProvider({ children }) {
       isAdmin,
       isSuspended,
       loading,
+      isRecovery,
       login,
       logout,
       inviteStudent,
