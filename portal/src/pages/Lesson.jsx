@@ -34,6 +34,8 @@ export default function Lesson() {
     .map(id => getDownloadById(id))
     .filter(d => d && d.available)
 
+  const hasStations = Array.isArray(lesson.stations) && lesson.stations.length > 0
+
   return (
     <div className="container container--narrow stack-lg">
       <nav className="breadcrumbs">
@@ -52,34 +54,169 @@ export default function Lesson() {
         </h1>
       </header>
 
-      {/* פתיח יחידת העבודה — תוכן כתוב, ללא וידאו */}
-      <section className="lesson-block lesson-block--insight">
-        <h2 className="lesson-block__label">יחידת עבודה כתובה</h2>
-        <p>
-          כאן מתחילה שיטת העבודה. קרא, עצור ויישם — כדי להבין טוב יותר מה קורה
-          מתחת לפני השטח בשיחות אמיתיות.
-        </p>
-      </section>
+      {hasStations ? (
+        <>
+          {/* פתיח */}
+          {lesson.preamble?.length > 0 && (
+            <div className="lesson-preamble card">
+              {lesson.preamble.map((p, i) => <p key={i}>{p}</p>)}
+            </div>
+          )}
 
-      <section className="lesson-block lesson-block--goal">
-        <h2 className="lesson-block__label">מטרת היחידה</h2>
-        <p>{lesson.goal}</p>
-      </section>
+          {/* תחנות */}
+          {lesson.stations.map((station, idx) => (
+            <div key={station.id} className="stack-lg">
+              <section className="card lesson-station">
+                {/* כותרת תחנה */}
+                <div className="lesson-station__header">
+                  <span className="lesson-station__number">{station.number}</span>
+                  <h2 className="lesson-station__title">{station.title}</h2>
+                </div>
 
-      <section className="lesson-block">
-        <h2 className="lesson-block__label">סיכום היחידה</h2>
-        <p>{lesson.summary}</p>
-      </section>
+                {/* פסקאות פתיחה */}
+                {station.paragraphs?.length > 0 && (
+                  <div className="lesson-station__paragraphs">
+                    {station.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+                  </div>
+                )}
 
-      <section className="lesson-block lesson-block--insight">
-        <h2 className="lesson-block__label">התובנה המרכזית</h2>
-        <p>{lesson.insight}</p>
-      </section>
+                {/* דוגמאות */}
+                {station.examples?.map((ex, i) => (
+                  <div key={i} className="lesson-example">
+                    <span className="lesson-example__label">{ex.label}</span>
+                    <p className="lesson-example__body">{ex.body}</p>
+                  </div>
+                ))}
 
-      <section className="lesson-block lesson-block--exercise">
-        <h2 className="lesson-block__label">תרגיל</h2>
-        <p>{lesson.exercise}</p>
-      </section>
+                {/* פסקאות נוספות אחרי דוגמאות */}
+                {station.extraParagraphs?.map((p, i) => (
+                  <p key={i} style={{ color: 'var(--text-soft)', lineHeight: 1.75 }}>{p}</p>
+                ))}
+
+                {/* טבלת ניגוד (תחנה 4) */}
+                {station.contrast?.length > 0 && (
+                  <div className="lesson-contrast">
+                    <div className="lesson-contrast__head">
+                      <div className="lesson-contrast__head-good">פותחת</div>
+                      <div className="lesson-contrast__head-bad">סוגרת</div>
+                    </div>
+                    {station.contrast.map((row, i) => (
+                      <div key={i} className="lesson-contrast__row">
+                        <div className="lesson-contrast__good">{row.good}</div>
+                        <div className="lesson-contrast__bad">{row.bad}</div>
+                      </div>
+                    ))}
+                    {station.contrastNote && (
+                      <div className="lesson-contrast__note">{station.contrastNote}</div>
+                    )}
+                  </div>
+                )}
+
+                {/* תבניות שאלה (תחנה 4) */}
+                {station.templates?.length > 0 && (
+                  <div className="lesson-templates">
+                    {station.templates.map((t) => (
+                      <div key={t.num} className="lesson-template-item">
+                        <span className="lesson-template-item__num">{t.num}</span>
+                        <span className="lesson-template-item__text">{t.text}</span>
+                      </div>
+                    ))}
+                    {station.templatesNote && (
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', fontStyle: 'italic' }}>
+                        {station.templatesNote}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* תגובות (תחנה 5) */}
+                {station.responses?.length > 0 && (
+                  <div className="lesson-responses">
+                    {station.responses.map((r, i) => (
+                      <div key={i} className="lesson-response">
+                        <span className="lesson-response__title">{r.title}</span>
+                        <p className="lesson-response__body">{r.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* תרגיל */}
+                {station.exercise && (
+                  <div className="lesson-exercise">
+                    <span className="lesson-exercise__label">{station.exercise.label}</span>
+                    <p className="lesson-exercise__prompt">{station.exercise.prompt}</p>
+                    {station.exercise.items?.length > 0 && (
+                      <ul className="lesson-exercise__items">
+                        {station.exercise.items.map((item, i) => <li key={i}>{item}</li>)}
+                      </ul>
+                    )}
+                    {station.exercise.note && (
+                      <p className="lesson-exercise__note">{station.exercise.note}</p>
+                    )}
+                  </div>
+                )}
+
+                {/* רגע אהה */}
+                {station.aha && (
+                  <blockquote className="lesson-station__aha">{station.aha}</blockquote>
+                )}
+
+                {/* מעבר */}
+                {station.transition && (
+                  <p className="lesson-station__transition">{station.transition}</p>
+                )}
+              </section>
+
+              {/* מפריד בין תחנות (לא אחרי האחרונה) */}
+              {idx < lesson.stations.length - 1 && (
+                <div className="lesson-station-divider" aria-hidden="true" />
+              )}
+            </div>
+          ))}
+
+          {/* סגירה */}
+          {lesson.stationsClosing && (
+            <div className="lesson-stations-closing">
+              <div className="lesson-stations-closing__done" aria-hidden="true">✓</div>
+              <p className="lesson-stations-closing__flow">{lesson.stationsClosing.flow}</p>
+              <p className="lesson-stations-closing__body">{lesson.stationsClosing.body}</p>
+              <p className="lesson-stations-closing__cta">{lesson.stationsClosing.cta}</p>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          {/* פתיח יחידת העבודה — תוכן כתוב, ללא וידאו */}
+          <section className="lesson-block lesson-block--insight">
+            <h2 className="lesson-block__label">יחידת עבודה כתובה</h2>
+            <p>
+              כאן מתחילה שיטת העבודה. קרא, עצור ויישם — כדי להבין טוב יותר מה קורה
+              מתחת לפני השטח בשיחות אמיתיות.
+            </p>
+          </section>
+
+          <section className="lesson-block lesson-block--goal">
+            <h2 className="lesson-block__label">מטרת היחידה</h2>
+            <p>{lesson.goal}</p>
+          </section>
+
+          <section className="lesson-block">
+            <h2 className="lesson-block__label">סיכום היחידה</h2>
+            <p>{lesson.summary}</p>
+          </section>
+
+          <section className="lesson-block lesson-block--insight">
+            <h2 className="lesson-block__label">התובנה המרכזית</h2>
+            <p>{lesson.insight}</p>
+          </section>
+
+          <section className="lesson-block lesson-block--exercise">
+            <h2 className="lesson-block__label">תרגיל</h2>
+            <p>{lesson.exercise}</p>
+          </section>
+        </>
+      )}
 
       {lessonTerms.length > 0 && (
         <section className="lesson-block">

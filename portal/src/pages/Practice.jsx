@@ -13,29 +13,36 @@ const STEPS = [
   {
     key: 'change',
     title: 'שינוי',
-    prompt: 'מה השתנה? סמן את הרגע שבו האדם יצא מהבייסליין שלו.',
+    prompt: 'מה השתנה ומתי? סמן את הרגע שהאדם יצא מהבייסליין. זכור: שינוי אחד קטן = שמים לב. שני שינויים בו-זמנית = שווה שאלה.',
     placeholder: 'למשל: פתאום הסיט את המבט, דיבור הואט, ידיים נגעו בצוואר...',
   },
   {
     key: 'context',
     title: 'הקשר',
-    prompt: 'מה נאמר או קרה בשיחה ממש לפני השינוי?',
-    placeholder: 'למשל: שאלתי על הלוח זמנים, ציינתי את המחיר, הצעתי תאריך...',
+    prompt: 'מה נאמר ברגע לפני השינוי — ברזולוציה של משפט, לא של נושא? איזו מילה, שאלה, או הצעה ספציפית קדמה לשינוי?',
+    placeholder: 'למשל: "שאלתי על הלוח זמנים", "ציינתי את המחיר", "הצעתי תאריך מסוים"...',
   },
   {
     key: 'question',
     title: 'שאלה טובה יותר',
-    prompt: 'נסח שאלה אחת רכה שמזמינה להבהיר — לא מאשימה ולא קובעת מסקנה.',
-    placeholder: 'למשל: "יש משהו בתאריך הזה שפחות עובד לך?"',
+    prompt: 'נסח שאלה רכה שמזמינה להבהיר. בחר מתבנית: (1) ודא + פתח: "רוצה לוודא שהבנתי — [פרפרזה]. יש משהו שלא הגיעו אליו?" (2) הפחת לחץ: "אין צורך להחליט עכשיו — מה הכי חשוב לך?" (3) ישיר + רך: "הרגשתי שהרגע הזה מורכב — מה קורה אצלך?"',
+    placeholder: 'למשל: "יש פרט שהיית רוצה שנסתכל עליו מחדש?"',
+  },
+  {
+    key: 'loop',
+    title: 'הלופ — מה קרה אחרי?',
+    prompt: 'אחרי ששאלת — מה קיבלת? (1) ההסבר הפיג את השינוי → רעש, לכו הלאה. (2) ההסבר אישר שיש נושא → שיחה אמיתית נפתחת. (3) "הכל בסדר" אבל הגוף לא נפתח → לא לוחצים, שומרים להמשך.',
+    placeholder: 'תאר את התגובה שקיבלת ומה עשית איתה...',
   },
 ]
 
-const EMPTY_ANSWERS = { baseline: '', change: '', context: '', question: '' }
+const EMPTY_ANSWERS = { baseline: '', change: '', context: '', question: '', loop: '' }
 
 export default function Practice() {
   const [answers, setAnswers] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem('practice-answers')) || EMPTY_ANSWERS
+      const saved = JSON.parse(localStorage.getItem('practice-answers'))
+      return saved ? { ...EMPTY_ANSWERS, ...saved } : EMPTY_ANSWERS
     } catch {
       return EMPTY_ANSWERS
     }
@@ -59,7 +66,7 @@ export default function Practice() {
     <div className="container container--narrow stack-lg">
       <header className="page-head">
         <p className="page-head__eyebrow">הערכה · תרגול עצמי</p>
-        <h1 className="page-head__title">תרגול: ארבעת השלבים בשיחה אמיתית</h1>
+        <h1 className="page-head__title">תרגול: חמשת השלבים בשיחה אמיתית</h1>
         <p className="page-head__lead">
           התרגיל הזה הופך את השיטה מידע לכלי. בחר שיחה אחת אמיתית מהשבוע האחרון —
           בעבודה, בבית, עם לקוח — והרץ עליה את ארבעת השלבים בכתב.
@@ -76,7 +83,7 @@ export default function Practice() {
       </section>
 
       <section className="lesson-block">
-        <h2 className="lesson-block__label">ארבעת השלבים — מלא לעצמך</h2>
+        <h2 className="lesson-block__label">חמשת השלבים — מלא לעצמך</h2>
         <ol className="practice-steps">
           {STEPS.map(({ key, title, prompt, placeholder }, i) => (
             <li key={key} className="practice-step">
