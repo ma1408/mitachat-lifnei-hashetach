@@ -1,60 +1,112 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useProgress } from '../context/ProgressContext.jsx'
 import { CORE_PRINCIPLE, getLessonById } from '../data/course'
 import ProgressBar from '../components/ProgressBar.jsx'
 import {
-  STARTER_FULL_NAME,
-  STARTER_TAGLINE,
   STARTER_KIT_ITEMS,
   STARTER_CORE_LESSON,
 } from '../data/product'
 
+// כרטיסים ראשוניים לפי state — שאר הכלים דרך "כל כלי הערכה"
+const NEW_CARDS    = ['intro']
+const RETURN_CARDS = ['practice', 'workbook', 'checklist']
+
 export default function Dashboard() {
   const { user } = useAuth()
   const { lastLessonId, completedCount, percent, resumeLessonId } = useProgress()
-  const hasStarted = lastLessonId || completedCount > 0
+  const hasStarted  = lastLessonId !== null || completedCount > 0
   const resumeLesson = getLessonById(resumeLessonId)
+  const [expanded, setExpanded] = useState(false)
+
+  const primaryIds   = hasStarted ? RETURN_CARDS : NEW_CARDS
+  const visibleCards = expanded
+    ? STARTER_KIT_ITEMS
+    : STARTER_KIT_ITEMS.filter(item => primaryIds.includes(item.id))
 
   return (
     <div className="container stack-lg">
+
+      {/* ══ Hero ══ */}
       <section className="hero-card">
-        <p className="hero-card__eyebrow">ערכת העבודה שלך</p>
-        <h1 className="hero-card__title">
-          ברוך הבא ל־<span className="gold">{STARTER_FULL_NAME}</span>
-        </h1>
-        <p className="hero-card__lead">{STARTER_TAGLINE}</p>
-        <p className="hero-card__principle">&ldquo;{CORE_PRINCIPLE}&rdquo;</p>
+        <p className="hero-card__eyebrow">
+          {hasStarted ? 'ברוך הבא בחזרה' : 'ערכת העבודה שלך'}
+        </p>
 
         {hasStarted ? (
+          /* ── Returning user ── */
           <>
+            <h1
+              className="hero-card__title"
+              style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}
+            >
+              {resumeLesson?.title}
+              <span
+                className="muted"
+                style={{
+                  display: 'block',
+                  fontSize: '0.95rem',
+                  fontFamily: 'var(--font)',
+                  fontWeight: 400,
+                  marginTop: '6px',
+                }}
+              >
+                יחידה {resumeLesson?.number}
+              </span>
+            </h1>
+
             <div className="hero-card__progress">
-              <span className="muted">ההתקדמות שלך · {completedCount} מתוך 15 יחידות הושלמו</span>
+              <span className="muted">
+                ההתקדמות שלך · {completedCount} מתוך 15 יחידות הושלמו
+              </span>
               <ProgressBar percent={percent} />
             </div>
+
             <div className="lesson-actions">
               <Link to={`/lesson/${resumeLessonId}`} className="btn btn--gold">
-                המשך מאיפה שעצרת — יחידה {resumeLesson?.number}: {resumeLesson?.title}
+                המשך — {resumeLesson?.title}
               </Link>
               <Link to="/course" className="btn btn--outline">
-                לכל היחידות ←
+                ראה את כל ההתקדמות ←
               </Link>
             </div>
           </>
         ) : (
-          <Link to={`/lesson/${STARTER_CORE_LESSON}`} className="btn btn--gold">
-            התחל להבין מה קורה בשיחה
-          </Link>
+          /* ── New user ── */
+          <>
+            <h1 className="hero-card__title">מתחת לפני השטח</h1>
+            <p className="hero-card__lead">
+              כשמשהו לא מסתדר בשיחה — ארבעה שלבים שהופכים תחושת בטן לשאלה חכמה.
+            </p>
+            <p className="hero-card__principle">&ldquo;{CORE_PRINCIPLE}&rdquo;</p>
+
+            <Link
+              to={`/lesson/${STARTER_CORE_LESSON}`}
+              className="btn btn--gold btn--block"
+            >
+              להבין שיחה ב-4 שלבים ←
+            </Link>
+            <p
+              className="muted"
+              style={{ textAlign: 'center', marginTop: '12px', fontSize: '0.82rem' }}
+            >
+              שיעור הפתיחה · כ-15 דקות קריאה
+            </p>
+          </>
         )}
       </section>
 
+      {/* ══ Kit section ══ */}
       <section className="stack-sm">
         <div className="section-head">
-          <h2 className="section-head__title">מה יש בערכה</h2>
+          <h2 className="section-head__title">
+            {hasStarted ? 'הכלים שלך' : 'מאיפה כדאי להתחיל'}
+          </h2>
         </div>
 
         <div className="grid grid--kit">
-          {STARTER_KIT_ITEMS.map((item) => {
+          {visibleCards.map((item) => {
             const isSoon = item.status === 'soon'
 
             if (isSoon || !item.to) {
@@ -82,12 +134,26 @@ export default function Dashboard() {
             )
           })}
         </div>
+
+        {!expanded && (
+          <button
+            className="link-gold"
+            style={{
+              background: 'none',
+              border: 'none',
+              padding: '4px 0',
+              cursor: 'pointer',
+              fontFamily: 'var(--font)',
+            }}
+            onClick={() => setExpanded(true)}
+          >
+            כל כלי הערכה ←
+          </button>
+        )}
       </section>
 
       {user?.email && (
-        <p className="muted dashboard__welcome">
-          מחובר/ת כ־{user.email}
-        </p>
+        <p className="muted dashboard__welcome">מחובר/ת כ־{user.email}</p>
       )}
     </div>
   )
