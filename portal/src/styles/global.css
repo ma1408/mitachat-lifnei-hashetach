@@ -283,11 +283,11 @@ p { margin: 0; }
   max-width: 430px;
   padding: 40px 34px;
   background: var(--surface);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(201, 168, 106, 0.30);
   border-radius: 24px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(201, 168, 106, 0.16);
 }
 .login__brand { text-align: center; margin-bottom: 26px; }
 .login__mark {
@@ -314,6 +314,33 @@ p { margin: 0; }
   font-weight: 600;
   margin-bottom: 22px;
 }
+
+/* trust block — מה שכבר רכשת, בלי טון מכירתי */
+.login__trust {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(201, 168, 106, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+}
+.login__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.4;
+}
+.login__trust-icon {
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
 .login__form { display: flex; flex-direction: column; gap: 16px; }
 
 .field { display: flex; flex-direction: column; gap: 7px; }

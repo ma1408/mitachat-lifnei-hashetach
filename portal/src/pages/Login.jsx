@@ -3,6 +3,7 @@ import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { COURSE_TITLE } from '../data/course'
 import BrandMark from '../components/BrandMark.jsx'
+import Icon from '../components/Icon.jsx'
 
 const ERROR_MESSAGES = {
   'Invalid login credentials': 'אימייל או סיסמה שגויים.',
@@ -70,7 +71,20 @@ export default function Login() {
           </p>
         </div>
 
-        <h2 className="login__heading">כניסה לערכת העבודה</h2>
+        <ul className="login__trust">
+          <li className="login__trust-item">
+            <Icon name="layers" className="login__trust-icon" />
+            יחידת ליבה: להבין שיחה ב-4 שלבים
+          </li>
+          <li className="login__trust-item">
+            <Icon name="pencil" className="login__trust-icon" />
+            מחברת עבודה + תיקי הדגמה
+          </li>
+          <li className="login__trust-item">
+            <Icon name="book" className="login__trust-icon" />
+            מדריך · מילון · צ׳ק ליסט
+          </li>
+        </ul>
 
         <form className="login__form" onSubmit={handleSubmit} noValidate>
           <label className="field">
