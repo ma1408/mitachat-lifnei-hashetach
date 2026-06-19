@@ -2,16 +2,18 @@ import { useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { COURSE_TITLE } from '../data/course'
+import Icon from './Icon.jsx'
+import BrandMark from './BrandMark.jsx'
 
 // ניווט ערכת העבודה הדיגיטלית. תוכן נוסף ששמור בקוד אינו מוצג
 // בניווט הראשי בתצוגה זו.
 const studentNavItems = [
-  { to: '/dashboard', label: 'הערכה', icon: '⌂' },
-  { to: '/guide',     label: 'המדריך', icon: '✦' },
-  { to: '/course',    label: 'היחידות', icon: '▤' },
-  { to: '/cases',     label: 'תיקי שיחה', icon: '◆' },
-  { to: '/workbook',  label: 'מחברת העבודה', icon: '✎' },
-  { to: '/glossary',  label: 'מילון', icon: '◎' },
+  { to: '/dashboard', label: 'הערכה', icon: 'home' },
+  { to: '/guide',     label: 'המדריך', icon: 'compass' },
+  { to: '/course',    label: 'היחידות', icon: 'list' },
+  { to: '/cases',     label: 'תיקי שיחה', icon: 'folder' },
+  { to: '/workbook',  label: 'מחברת העבודה', icon: 'pencil' },
+  { to: '/glossary',  label: 'מילון', icon: 'book' },
 ]
 
 export default function Layout() {
@@ -25,7 +27,7 @@ export default function Layout() {
   }
 
   const navItems = isAdmin
-    ? [...studentNavItems, { to: '/admin', label: 'Admin', icon: '⚙' }]
+    ? [...studentNavItems, { to: '/admin', label: 'Admin', icon: 'settings' }]
     : studentNavItems
 
   return (
@@ -33,7 +35,7 @@ export default function Layout() {
       <header className="topbar">
         <div className="topbar__inner">
           <NavLink to="/dashboard" className="brand" onClick={() => setMenuOpen(false)}>
-            <span className="brand__mark" aria-hidden="true" />
+            <BrandMark className="brand__mark" />
             <span className="brand__text">{COURSE_TITLE}</span>
           </NavLink>
 
@@ -48,7 +50,7 @@ export default function Layout() {
                 onClick={() => setMenuOpen(false)}
               >
                 <span className="mainnav__icon" aria-hidden="true">
-                  {item.icon}
+                  <Icon name={item.icon} />
                 </span>
                 {item.label}
               </NavLink>

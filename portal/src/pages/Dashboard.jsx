@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext.jsx'
 import { useProgress } from '../context/ProgressContext.jsx'
 import { CORE_PRINCIPLE, getLessonById } from '../data/course'
 import ProgressBar from '../components/ProgressBar.jsx'
+import Icon from '../components/Icon.jsx'
 import {
   STARTER_KIT_ITEMS,
   STARTER_CORE_LESSON,
@@ -14,7 +14,6 @@ const NEW_CARDS    = ['intro']
 const RETURN_CARDS = ['practice', 'workbook', 'checklist']
 
 export default function Dashboard() {
-  const { user } = useAuth()
   const { lastLessonId, completedCount, percent, resumeLessonId } = useProgress()
   const hasStarted  = lastLessonId !== null || completedCount > 0
   const resumeLesson = getLessonById(resumeLessonId)
@@ -112,7 +111,9 @@ export default function Dashboard() {
             if (isSoon || !item.to) {
               return (
                 <article key={item.id} className="kit-card kit-card--soon">
-                  <span className="kit-card__icon" aria-hidden="true">{item.icon}</span>
+                  <span className="kit-card__icon" aria-hidden="true">
+                    <Icon name={item.icon} />
+                  </span>
                   <div className="kit-card__body">
                     <h3 className="kit-card__title">{item.title}</h3>
                     <p className="kit-card__desc">{item.description}</p>
@@ -124,7 +125,9 @@ export default function Dashboard() {
 
             return (
               <Link key={item.id} to={item.to} className="kit-card">
-                <span className="kit-card__icon" aria-hidden="true">{item.icon}</span>
+                <span className="kit-card__icon" aria-hidden="true">
+                  <Icon name={item.icon} />
+                </span>
                 <div className="kit-card__body">
                   <h3 className="kit-card__title">{item.title}</h3>
                   <p className="kit-card__desc">{item.description}</p>
@@ -151,10 +154,6 @@ export default function Dashboard() {
           </button>
         )}
       </section>
-
-      {user?.email && (
-        <p className="muted dashboard__welcome">מחובר/ת כ־{user.email}</p>
-      )}
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { COURSE_TITLE } from '../data/course'
+import BrandMark from '../components/BrandMark.jsx'
 
 export default function ResetPassword() {
   const { isRecovery, loading } = useAuth()
@@ -64,7 +65,7 @@ export default function ResetPassword() {
         <div className="login__aura" aria-hidden="true" />
         <div className="login__card">
           <div className="login__brand">
-            <span className="login__mark" aria-hidden="true" />
+            <BrandMark className="login__mark" />
             <h1 className="login__title">{COURSE_TITLE}</h1>
           </div>
           <p style={{ color: 'var(--ok)', textAlign: 'center', fontSize: '1rem', marginTop: '1.5rem' }}>
@@ -80,7 +81,7 @@ export default function ResetPassword() {
       <div className="login__aura" aria-hidden="true" />
       <div className="login__card">
         <div className="login__brand">
-          <span className="login__mark" aria-hidden="true" />
+          <BrandMark className="login__mark" />
           <h1 className="login__title">{COURSE_TITLE}</h1>
         </div>
 

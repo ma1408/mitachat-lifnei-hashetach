@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Navigate, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { COURSE_TITLE } from '../data/course'
+import BrandMark from '../components/BrandMark.jsx'
 
 const ERROR_MESSAGES = {
   'Invalid login credentials': 'אימייל או סיסמה שגויים.',
@@ -61,7 +62,7 @@ export default function Login() {
       <div className="login__aura" aria-hidden="true" />
       <div className="login__card">
         <div className="login__brand">
-          <span className="login__mark" aria-hidden="true" />
+          <BrandMark className="login__mark" />
           <h1 className="login__title">{COURSE_TITLE}</h1>
           <p className="login__subtitle">
             להבין מה קורה מתחת לפני השטח בשיחות אמיתיות — לזהות פערים,
