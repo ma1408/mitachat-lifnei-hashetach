@@ -1460,3 +1460,195 @@ textarea:focus-visible {
   outline: none;
   box-shadow: 0 0 0 1px var(--gold);
 }
+
+/* ============== Lesson Stations ============== */
+.lesson-preamble {
+  padding: 26px 28px;
+  background: linear-gradient(135deg, rgba(201,168,106,0.09), rgba(201,168,106,0.02));
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lesson-preamble p {
+  color: var(--text-soft);
+  line-height: 1.8;
+  font-size: 1.02rem;
+}
+
+.lesson-station {
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 28px 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lesson-station__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lesson-station__number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border-strong);
+  color: var(--gold-bright);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  background: rgba(201,168,106,0.08);
+}
+
+.lesson-station__title {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.lesson-station__paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lesson-station__paragraphs p {
+  color: var(--text-soft);
+  line-height: 1.8;
+}
+
+.lesson-station__extra {
+  color: var(--text-soft);
+  line-height: 1.75;
+  font-style: italic;
+}
+
+.lesson-example {
+  background: rgba(0,0,0,0.28);
+  border-right: 3px solid var(--gold-deep);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.lesson-example__label {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+.lesson-example__body {
+  color: var(--text-soft);
+  line-height: 1.75;
+  font-size: 0.97rem;
+}
+
+.lesson-station__aha {
+  margin: 0;
+  padding: 14px 20px;
+  background: rgba(201,168,106,0.1);
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--radius-sm);
+  border-right: 3px solid var(--gold);
+  color: var(--text);
+  font-size: 1.01rem;
+  line-height: 1.75;
+}
+
+.lesson-station__transition {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+.lesson-station-divider {
+  height: 1px;
+  background: linear-gradient(to left, transparent, var(--glass-border-strong), transparent);
+}
+
+.lesson-templates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lesson-template-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.22);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+.lesson-template-item__num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(201,168,106,0.15);
+  color: var(--gold-bright);
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+.lesson-template-item__text {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.lesson-exercise-items {
+  margin: 10px 0 0;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-soft);
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+.lesson-exercise-note {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.lesson-stations-closing {
+  padding: 24px 28px;
+  background: rgba(127,184,138,0.06);
+  border: 1px solid rgba(127,184,138,0.2);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lesson-stations-closing__flow {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.lesson-stations-closing__body {
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+.lesson-stations-closing__cta {
+  color: var(--gold);
+  font-size: 0.92rem;
+  font-style: italic;
+}
