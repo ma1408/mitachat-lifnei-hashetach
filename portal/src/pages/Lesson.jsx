@@ -70,7 +70,12 @@ export default function Lesson() {
                 {/* כותרת תחנה */}
                 <div className="lesson-station__header">
                   <span className="lesson-station__number">{station.number}</span>
-                  <h2 className="lesson-station__title">{station.title}</h2>
+                  <div className="lesson-station__heading">
+                    <span className="lesson-station__progress">
+                      תחנה {idx + 1} / {lesson.stations.length}
+                    </span>
+                    <h2 className="lesson-station__title">{station.title}</h2>
+                  </div>
                 </div>
 
                 {/* פסקאות פתיחה */}
