@@ -5,9 +5,11 @@ import {
   getLessonById,
   getModuleById,
   getNextLessonId,
+  TOTAL_LESSONS,
 } from '../data/course'
 import { getTermsByLesson } from '../data/glossary'
 import { getDownloadById } from '../data/downloads'
+import Icon from '../components/Icon.jsx'
 
 export default function Lesson() {
   const { lessonId } = useParams()
@@ -49,7 +51,7 @@ export default function Lesson() {
       <header className="lesson-head">
         <span className="lesson-head__module">{module.title}</span>
         <h1 className="lesson-head__title">
-          <span className="lesson-head__num">יחידה {lesson.number}</span>
+          <span className="lesson-head__num">יחידה {lesson.number} מתוך {TOTAL_LESSONS}</span>
           {lesson.title}
         </h1>
       </header>
@@ -194,7 +196,10 @@ export default function Lesson() {
         <>
           {/* פתיח יחידת העבודה — תוכן כתוב, ללא וידאו */}
           <section className="lesson-block lesson-block--insight">
-            <h2 className="lesson-block__label">יחידת עבודה כתובה</h2>
+            <h2 className="lesson-block__label">
+              <Icon name="book" className="lesson-block__icon" />
+              יחידת עבודה כתובה
+            </h2>
             <p>
               כאן מתחילה שיטת העבודה. קרא, עצור ויישם — כדי להבין טוב יותר מה קורה
               מתחת לפני השטח בשיחות אמיתיות.
@@ -202,22 +207,34 @@ export default function Lesson() {
           </section>
 
           <section className="lesson-block lesson-block--goal">
-            <h2 className="lesson-block__label">מטרת היחידה</h2>
+            <h2 className="lesson-block__label">
+              <Icon name="target" className="lesson-block__icon" />
+              מטרת היחידה
+            </h2>
             <p>{lesson.goal}</p>
           </section>
 
-          <section className="lesson-block">
-            <h2 className="lesson-block__label">סיכום היחידה</h2>
+          <section className="lesson-block lesson-block--summary">
+            <h2 className="lesson-block__label">
+              <Icon name="file" className="lesson-block__icon" />
+              סיכום היחידה
+            </h2>
             <p>{lesson.summary}</p>
           </section>
 
           <section className="lesson-block lesson-block--insight">
-            <h2 className="lesson-block__label">התובנה המרכזית</h2>
+            <h2 className="lesson-block__label">
+              <Icon name="compass" className="lesson-block__icon" />
+              התובנה המרכזית
+            </h2>
             <p>{lesson.insight}</p>
           </section>
 
           <section className="lesson-block lesson-block--exercise">
-            <h2 className="lesson-block__label">תרגיל</h2>
+            <h2 className="lesson-block__label">
+              <Icon name="pencil" className="lesson-block__icon" />
+              תרגיל
+            </h2>
             <p>{lesson.exercise}</p>
           </section>
         </>
